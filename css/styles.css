@@ -1,0 +1,1251 @@
+/* ============================================================
+   styles.css — Pedro Benadiba Portfolio
+   Tema: fondo negro, títulos amarillo acento, texto blanco
+   La única excepción es la sección de contacto (fondo blanco)
+   ============================================================ */
+
+:root {
+  /* ── Paleta base — dinámica por scroll (JS actualiza estas vars) ── */
+  --bg:          #080808;
+  --text:        #e8e8e8;
+  --text-dim:    rgba(232,232,232,0.90);
+  --border:      rgba(232,232,232,0.18);
+  --accent:      #D4E174;
+  --accent-dim:  rgba(212,225,116,0.25);
+  --muted:       rgb(180,180,180);
+  --nav-bg:      rgba(8,8,8,0.92);
+  --cursor-color: #D4E174;
+  --bg-overlay:     rgba(8,8,8,0.45);
+  --canvas-opacity: 1;
+
+  --font: 'Space Grotesk', sans-serif;
+  --nav-h: 64px;
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html {
+  scroll-behavior: auto;
+  scroll-snap-type: y proximity;
+  overflow-x: hidden; /* aquí, no en body — evita que fixed se rompa */
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  cursor: none;
+}
+
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+button { font-family: var(--font); cursor: pointer; }
+
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+/* ============================================================
+   CURSOR PUNTO + ANILLO (solo desktop)
+   ============================================================ */
+
+/* Punto pequeño — sigue el mouse de forma exacta e instantánea */
+.cursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 4px; height: 4px;
+  background: #fff;              /* blanco puro: difference lo invierte según el fondo */
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  display: none;
+  will-change: transform;
+  mix-blend-mode: difference;    /* blanco sobre oscuro = blanco; blanco sobre blanco = negro */
+  transition: width 0.15s, height 0.15s;
+}
+.cursor.is-hovering {
+  width: 7px; height: 7px;
+}
+
+/* Anillo exterior — sigue con delay (lerp en app.js) */
+.cursor-ring {
+  position: fixed;
+  top: 0; left: 0;
+  width: 34px; height: 34px;
+  border: 1.5px solid #fff;     /* blanco puro para que difference funcione */
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  display: none;
+  will-change: transform;
+  mix-blend-mode: difference;
+  transition: width 0.2s, height 0.2s;
+}
+/* Anillo reacciona al hover */
+.cursor.is-hovering + .cursor-ring {
+  width: 50px; height: 50px;
+}
+
+@media (max-width: 768px) {
+  body { cursor: auto; }
+  .cursor, .cursor-ring { display: none !important; }
+}
+
+/* ============================================================
+   NAVEGACIÓN
+   ============================================================ */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  z-index: 1000;
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+}
+
+.nav__logo-link { display: flex; align-items: center; gap: 8px; }
+
+/* Logo SVG inline — color hereda var(--accent):
+   phase 0 (dark bg)    → amarillo #D4E174
+   phase 1 (yellow bg)  → negro #141414
+   phase 2 (white bg)   → negro #111111  */
+.nav__logo-svg {
+  height: 32px;
+  width: auto;
+  color: var(--accent);
+  transition: color 0.4s ease;
+  display: block;
+  fill: currentColor;
+}
+
+/* Texto "PB" junto al logo SVG */
+.nav__logo-text {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  line-height: 1;
+  transition: color 0.4s ease;
+}
+
+.nav__actions { display: flex; align-items: center; gap: 24px; }
+
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--text-dim);
+  padding: 2px 0;
+  transition: color 0.2s;
+}
+.lang-btn.is-active, .lang-btn:hover { color: var(--accent); }
+.lang-divider { color: var(--border); }
+
+.nav__contact-btn {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  padding: 6px 18px;
+  color: var(--text);
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.nav__contact-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ============================================================
+   CAPA DE FONDO — cambia de color con el scroll (JS → --bg)
+   ============================================================ */
+#bgLayer {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: var(--bg);
+  pointer-events: none;
+}
+
+/* ============================================================
+   CANVAS — transparente, partículas flotan sobre #bgLayer
+   ============================================================ */
+#particlesCanvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  /* sin background — el canvas WebGL es transparente */
+  opacity: var(--canvas-opacity, 1);
+  transition: opacity 0.8s ease;
+}
+
+/* ============================================================
+   LAYOUT — partículas de fondo completo, contenido flota encima
+   El contenido ocupa la mitad izquierda con overlay semitransparente.
+   La mitad derecha muestra el canvas puro.
+   ============================================================ */
+.section {
+  position: relative;
+  /* sin z-index explícito → no crea stacking context aislado →
+     mix-blend-mode de los títulos puede "ver" el canvas detrás */
+  width: 100%;
+  min-height: 100vh;
+  background: none;   /* transparente — canvas visible detrás */
+}
+
+.section__inner {
+  width: 100%;
+  padding: calc(var(--nav-h) + 80px) 8vw 100px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Overlay muy sutil — lo suficiente para legibilidad, mínimo para que
+     el mix-blend-mode de los títulos vea las partículas */
+  background: var(--bg-overlay, rgba(8,8,8,0.18));
+}
+
+/* ============================================================
+   INDICADOR DE SCROLL
+   ============================================================ */
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 60px;
+}
+/* Línea espejo — abajo a la derecha, misma animación */
+.scroll-indicator--right {
+  left: auto;
+  right: 60px;
+}
+.scroll-indicator__line {
+  width: 1px;
+  height: 60px;
+  background: var(--accent);
+  display: block;
+  transform-origin: top;
+  animation: scrollLine 2s ease-in-out infinite;
+}
+/* La línea derecha arranca con 1s de retraso — da sensación de diálogo */
+.scroll-indicator--right .scroll-indicator__line {
+  animation-delay: 1s;
+}
+@keyframes scrollLine {
+  0%   { transform: scaleY(0); opacity: 1; }
+  60%  { transform: scaleY(1); opacity: 1; }
+  100% { transform: scaleY(1); opacity: 0; }
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.section--hero .section__inner {
+  justify-content: flex-end;
+  padding-bottom: 120px;
+}
+
+.hero__name {
+  font-size: clamp(3.5rem, 10vw, 12rem);
+  font-weight: 700;
+  line-height: 0.93;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+  color: var(--accent);
+  margin-bottom: 32px;
+  mix-blend-mode: difference;
+}
+
+.hero__tagline {
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  font-weight: 300;
+  line-height: 1.8;
+  max-width: 620px;
+  color: var(--text);
+  text-shadow: 0 0 24px var(--bg), 0 1px 4px var(--bg);
+}
+
+/* ============================================================
+   TIPOGRAFÍA DE SECCIONES
+   ============================================================ */
+.section__label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 40px;
+}
+
+/* Títulos grandes — mix-blend-mode: difference igual que .hero__name.
+   Sin variable — hardcodeado para que funcione en todas las fases. */
+.section__title--xl {
+  font-size: clamp(3.5rem, 7vw, 6.5rem);
+  font-weight: 700;
+  line-height: 0.93;
+  letter-spacing: -0.04em;
+  color: var(--accent);
+  margin-bottom: 36px;
+  mix-blend-mode: difference;
+}
+
+/* Texto cuerpo — shadow para legibilidad sobre partículas */
+.section__body {
+  font-size: clamp(1.15rem, 1.6vw, 1.35rem);
+  font-weight: 500;
+  line-height: 1.85;
+  max-width: min(800px, 100%);
+  color: var(--text);
+  text-shadow: 0 0 24px var(--bg), 0 1px 4px var(--bg);
+}
+
+/* En las secciones de fondo amarillo (Escucho/Proceso/Diseño),
+   el body-text necesita mayor contraste contra las partículas oscuras */
+.section--listen .section__body,
+.section--process .section__body,
+.section--design .section__body {
+  font-weight: 500;
+  text-shadow: 0 0 24px var(--bg), 0 1px 4px var(--bg), 0 0 10px rgba(255,255,255,0.35);
+}
+
+/* ============================================================
+   SECCIÓN SOBRE MÍ
+   ============================================================ */
+/* Snap anchors — moment boundaries only */
+#listen { scroll-snap-align: start; }
+#design { scroll-snap-align: start; }
+
+.section--about .section__inner {
+  display: grid;
+  grid-template-columns: 1fr min(340px, 32%);
+  column-gap: 6vw;
+  align-items: center;
+  padding-top: calc(var(--nav-h) + 56px);
+  padding-bottom: 80px;
+  min-height: auto;
+}
+
+.about__photo-wrap {
+  grid-column: 2;
+  grid-row: 1;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: #0d0d0d;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+  /* Reborde decorativo externo — mismo rectángulo, 8px de distancia */
+  outline: 1px solid var(--accent);
+  outline-offset: 8px;
+}
+
+.about__content {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.about__content .section__title--xl { margin-bottom: 0; }
+
+/* Foto color — capa base, en flujo normal, define la altura del contenedor */
+.about__photo--color {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* Foto umbralizada B&N — absolutamente encima, se desvanece en hover */
+.about__photo--bw {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.about__photo-wrap:hover .about__photo--bw {
+  opacity: 0;
+}
+
+/* Toggle tap en mobile: clase .is-color añadida/quitada vía JS */
+.about__photo-wrap.is-color .about__photo--bw {
+  opacity: 0;
+}
+
+.about__photo-wrap.no-photo .about__photo { display: none; }
+
+.about__photo-placeholder {
+  display: none;
+  position: absolute;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--accent);
+  background: #0a0a0a;
+}
+.about__photo-wrap.no-photo .about__photo-placeholder { display: flex; }
+
+/* ============================================================
+   SECCIÓN PROYECTOS — grilla 2 columnas dentro de la mitad izq
+   ============================================================ */
+.section--projects .section__inner {
+  padding-top: calc(var(--nav-h) + 56px);
+  padding-bottom: 80px;
+  justify-content: flex-start;
+  min-height: auto;
+}
+
+.projects__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin-top: 32px;
+  width: 100%;
+}
+
+.project-card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: #0d0d0d;
+  border: 1px solid var(--border);
+  /* Textura placeholder */
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent 0px, transparent 16px,
+    rgba(212,225,116,0.04) 16px, rgba(212,225,116,0.04) 17px
+  );
+}
+
+.project-card__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.4) grayscale(1) brightness(0.85);
+  transition: transform 0.5s ease, filter 0.3s;
+}
+.project-card:hover .project-card__img {
+  transform: scale(1.04);
+  filter: contrast(1.2) grayscale(0.6) brightness(1);
+}
+
+/* ── Cross-fade hover: imagen color (base) + umbralizada encima ─────────
+   Estado normal  → umbralizada visible (opacity 1)
+   Al hacer hover → umbralizada se desvanece (opacity 0), aparece color
+   ───────────────────────────────────────────────────────────────────── */
+.project-card__img--color {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease;
+}
+
+.project-card__img--bw {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 1;
+  transition: opacity 0.4s ease, transform 0.5s ease;
+}
+
+/* Escala en hover: ambas imágenes se mueven juntas */
+.project-card:hover .project-card__img--color,
+.project-card:hover .project-card__img--bw {
+  transform: scale(1.04);
+}
+
+/* La umbralizada se desvanece al hover → expone la imagen color debajo */
+.project-card:hover .project-card__img--bw {
+  opacity: 0;
+}
+
+.project-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.2) 55%, transparent 80%);
+  z-index: 1;
+}
+
+.project-card__info {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 20px 20px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transform: translateY(3px);
+  transition: transform 0.3s;
+}
+.project-card:hover .project-card__info { transform: translateY(0); }
+
+.project-card__num {
+  font-size: 0.64rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+}
+
+.project-card__name {
+  font-size: clamp(0.9rem, 1.4vw, 1.15rem);
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.project-card__cat {
+  font-size: 0.72rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.45);
+}
+
+/* Línea acento al hover */
+.project-card::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.35s ease;
+  z-index: 3;
+}
+.project-card:hover::after { transform: scaleY(1); }
+
+/* ============================================================
+   LAYOUT ASIMÉTRICO — Escucho / Proceso / Diseño
+   Título a la izquierda, cuerpo a la derecha
+   ============================================================ */
+.section--listen .section__inner,
+.section--process .section__inner,
+.section--design .section__inner {
+  display: grid;
+  grid-template-columns: 36% 1fr;
+  grid-auto-rows: auto;
+  column-gap: 6vw;
+  align-items: start;
+}
+
+/* Title occupies left column */
+.section--listen .section__title--xl,
+.section--process .section__title--xl,
+.section--design .section__title--xl {
+  grid-column: 1;
+  grid-row: 1 / 4;
+  align-self: center;
+  margin-bottom: 0;
+  /* Legibles en fondo amarillo y negro — sin blend mode */
+  mix-blend-mode: normal;
+  color: var(--text);
+}
+
+/* ── Línea horizontal sobre cada título (::before) ──────────────
+   Se despliega de izquierda a derecha cuando el título entra en
+   pantalla (.is-visible lo agrega initRevealObserver en scroll.js).
+   Color: var(--text) = oscuro/negro en fase amarilla (momento 2).
+──────────────────────────────────────────────────────────────── */
+.section--listen .section__title--xl::before,
+.section--process .section__title--xl::before,
+.section--design .section__title--xl::before {
+  content: '';
+  display: block;
+  height: 1px;
+  width: 100%;
+  background: var(--text);
+  margin-bottom: 28px;
+  transform-origin: left;
+  transform: scaleX(0);
+}
+/* Cuando el título entra en pantalla: animación en loop igual al hero */
+.section--listen .section__title--xl.is-visible::before,
+.section--process .section__title--xl.is-visible::before,
+.section--design .section__title--xl.is-visible::before {
+  animation: sectionLine 2s ease-in-out infinite;
+}
+
+@keyframes sectionLine {
+  0%   { transform: scaleX(0); opacity: 1; }
+  60%  { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(1); opacity: 0; }
+}
+
+/* Body and extra content occupy right column */
+.section--listen .section__body,
+.section--process .section__body,
+.section--design .section__body {
+  grid-column: 2;
+  grid-row: 1;
+  max-width: 560px;
+}
+
+.section--process .cards { grid-column: 2; grid-row: 2; }
+.section--listen  .tags  { grid-column: 2; grid-row: 2; margin-top: 28px; }
+
+/* ============================================================
+   LISTEN SEQUENCE — bloque de fotos + videos en fade loop
+   Ocupa la columna derecha, fila 2 (debajo del texto)
+   ============================================================ */
+.listen-seq {
+  grid-column: 2;
+  grid-row: 2;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #0a0a0a;
+  margin-top: 40px;
+  outline: 1px solid #000;
+  outline-offset: 8px;
+}
+
+.listen-seq__item {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity;
+}
+
+.listen-seq__item.is-active {
+  opacity: 1;
+}
+
+/* Foto: img cubre todo el contenedor */
+.listen-seq__item--photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Video: cubre todo el contenedor */
+.listen-seq__item--video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Responsive: en mobile ocupa la columna completa */
+@media (max-width: 768px) {
+  .listen-seq {
+    grid-column: 1;
+    margin-top: 32px;
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* ============================================================
+   SECCIONES DE TEXTO (Escucho, Proceso, Diseño)
+   ============================================================ */
+
+/* Cards de proceso */
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 44px;
+  width: 100%;
+}
+
+.card {
+  padding: 26px 0;
+  border-bottom: 1px solid var(--border);
+}
+.card:first-child { border-top: 1px solid var(--border); }
+
+.card__num {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 10px;
+}
+
+.card__title {
+  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 10px;
+  text-shadow: 0 0 20px var(--bg);
+}
+
+.card__body {
+  font-size: clamp(1rem, 1.25vw, 1.15rem);
+  line-height: 1.8;
+  font-weight: 500;
+  color: var(--text);
+  max-width: 420px;
+  text-shadow: 0 0 20px var(--bg), 0 0 10px rgba(255,255,255,0.35);
+}
+
+/* Tags de la sección Diseño */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 36px;
+}
+
+.tag {
+  display: inline-block;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 8px 24px;
+  font-size: 0.93rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-dim);
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+/* Hover solo en dispositivos con puntero real (desktop) — no aplica en touch */
+@media (hover: hover) {
+  .tag:hover {
+    background: #000;
+    color: #D4E174;
+    border-color: #000;
+  }
+}
+
+/* ============================================================
+   BOTÓN GENÉRICO
+   ============================================================ */
+.btn {
+  display: inline-block;
+  align-self: flex-start;
+  border: 1.5px solid var(--accent);
+  padding: 12px 28px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  transition: background 0.2s, color 0.2s;
+}
+.btn:hover {
+  background: var(--accent);
+  color: #000000;
+}
+
+.btn--submit {
+  width: 100%;
+  text-align: center;
+  padding: 14px;
+  margin-top: 8px;
+}
+
+/* ============================================================
+   SECCIÓN CONTACTO — dos columnas: info izquierda / formulario derecha
+   ============================================================ */
+
+/* ── SECCIÓN CONTACTO — fondo blanco, todo negro, sin amarillo ── */
+
+/* Escucho / Proceso / Diseño — sin override de color: usan var(--accent)
+   igual que "Pedro Benadiba" y "¡Qué onda! Soy Pedro".
+   mix-blend-mode: difference viene de .section__title--xl (regla global). */
+
+/* Contacto — fondo blanco: difference con cualquier color produciría inversiones
+   raras. Se fuerza a normal con color fijo. */
+.section--contact .section__title--xl {
+  mix-blend-mode: normal;
+  color: #111111;
+}
+
+/* En fondo blanco el botón tiene fill oscuro al hover → texto blanco */
+.section--contact .btn:hover {
+  color: #ffffff;
+}
+
+/* Frase sobre el formulario */
+.contact__phrase {
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  font-weight: 400;
+  line-height: 1.6;
+  margin-bottom: 36px;
+  color: var(--text);
+}
+
+/* Columnas: 3/4 info + 1/4 formulario */
+.contact__cols {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 0 5vw;
+  width: 100%;
+  align-items: start;
+}
+
+/* Columna izquierda */
+.contact__info {
+  display: flex;
+  flex-direction: column;
+}
+.contact__info .section__title--xl { margin-bottom: 48px; }
+
+/* Grilla 2×2 (mail/tel/instagram/behance) + fila meta (ubicación/formación) */
+.contact__grid,
+.contact__meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* LinkedIn (o cualquier celda marcada como full) ocupa ambas columnas */
+.contact__cell--full {
+  grid-column: 1 / -1;
+}
+
+/* Formación — bloque independiente, sale de la grilla de 2 columnas */
+.contact__meta--static {
+  display: block;          /* override del grid compartido con .contact__meta */
+  margin-top: 56px;        /* separación visual generosa de la grilla superior */
+}
+
+/* Texto de Formación: ancho amplio para respirar, tipografía más pequeña */
+.contact__meta--static .contact__cell-value {
+  font-size: clamp(0.78rem, 0.9vw, 0.88rem);
+  color: var(--text-dim);
+  opacity: 0.75;
+  max-width: 72%;          /* al menos 60-70 % del contenedor — texto amplio, no comprimido */
+}
+
+/* Celda base — solo línea superior, sin recuadro */
+.contact__cell {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 20px 0;
+  border-top: 1px solid var(--border);
+  color: var(--text);
+  text-decoration: none;
+  transition: opacity 0.2s;
+  text-shadow: 0 0 20px var(--bg);
+}
+/* Columna derecha: padding para separación visual sin borde vertical */
+.contact__grid .contact__cell:nth-child(even),
+.contact__meta  .contact__cell:nth-child(even) {
+  padding-left: 32px;
+}
+
+/* Links de contacto — subrayado sutil al hover */
+a.contact__cell { cursor: pointer; }
+a.contact__cell:hover .contact__cell-value {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+
+.contact__cell-label {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-shadow: none;
+}
+
+.contact__cell-value {
+  font-size: clamp(0.88rem, 1.05vw, 1rem);
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+/* Columna derecha: formulario */
+.contact__form-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact__form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form__group { position: relative; }
+
+.form__input {
+  width: 100%;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  padding: 20px 0 8px;
+  font-family: var(--font);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s;
+  resize: none;
+}
+.form__input:focus { border-bottom-color: var(--accent); }
+.form__textarea { min-height: 100px; line-height: 1.6; }
+/* Placeholder siempre visible cuando el campo está vacío */
+.form__input::placeholder { color: rgba(198, 198, 198, 0.95); }
+.form__input:focus::placeholder { color: rgba(198, 198, 198, 0.65); }
+
+/* Label siempre pequeño y arriba — no flota porque el placeholder
+   ya ocupa el espacio interior del campo */
+.form__label {
+  position: absolute;
+  top: 4px; left: 0;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  pointer-events: none;
+  transition: color 0.2s;
+}
+.form__input:focus + .form__label { color: var(--accent); }
+
+.form__feedback {
+  font-size: 0.85rem;
+  min-height: 1.2em;
+  color: var(--accent);
+}
+
+/* ============================================================
+   NAVEGACIÓN LATERAL — bloque fijo 2×2 (solo desktop)
+   Colores via --chip-* variables actualizadas por scroll.js según fase
+   ============================================================ */
+.side-nav {
+  position: absolute;   /* no fixed — aparece al entrar, se va al scrollear */
+  right: 28px;
+  top: calc(var(--nav-h) + 16px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  z-index: 100;
+}
+
+.side-nav__chip {
+  display: block;
+  padding: 18px 32px;
+  min-width: 140px;
+  font-family: var(--font);
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--chip-text, #e8e8e8);
+  background: var(--chip-bg, rgba(232,232,232,0.13));
+  border: 1px solid var(--chip-border, rgba(232,232,232,0.22));
+  border-radius: 6px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  white-space: nowrap;
+  transition: background 0.2s, border-color 0.2s;
+  cursor: pointer;
+}
+.side-nav__chip:hover {
+  background: var(--chip-bg-hover, rgba(232,232,232,0.26));
+  border-color: var(--chip-border-hover, rgba(232,232,232,0.42));
+}
+
+/* ── Hamburger (mobile only) ── */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  margin-left: 12px;
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--text, #e8e8e8);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+.hamburger.is-open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.is-open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ── Mobile nav overlay ── */
+.mobile-nav {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: var(--bg, #080808);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.32s ease;
+}
+.mobile-nav.is-open {
+  opacity: 1;
+  pointer-events: all;
+}
+.mobile-nav__link {
+  font-size: clamp(2rem, 10vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text, #e8e8e8);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.mobile-nav__link:hover { opacity: 0.55; }
+
+/* ============================================================
+   SCRAMBLE TEXT — chars generados por SplitText
+   Sin posición ni z-index propios → no crean stacking context →
+   el mix-blend-mode del título padre sigue funcionando contra el canvas
+   ============================================================ */
+.scramble__char {
+  color: inherit;       /* hereda el color del título (--accent / --text) */
+  display: inline-block;
+  /* Sin position, transform ni z-index propios */
+}
+
+/* ============================================================
+   ANIMACIONES DE ENTRADA
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+/* transform: none (no translateY(0)) — elimina el stacking context en reposo,
+   lo que permite que mix-blend-mode de los títulos alcance el canvas detrás */
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ============================================================
+   TICKER DE DISCIPLINAS
+   Marquee horizontal continuo entre About Me y Proyectos
+   ============================================================ */
+.disciplines-ticker {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 22px 0;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.disciplines-ticker__track {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  width: max-content;
+  will-change: transform;
+  animation: disciplinesTicker 44s linear infinite;
+}
+
+/* Detener si el usuario prefiere reducción de movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .disciplines-ticker__track { animation-play-state: paused; }
+}
+
+.disciplines-ticker__item {
+  font-family: var(--font);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  flex-shrink: 0;
+  padding: 0 6px;
+}
+
+.disciplines-ticker__sep {
+  color: var(--accent);
+  opacity: 0.35;
+  font-size: 0.78rem;
+  font-weight: 300;
+  padding: 0 18px;
+  flex-shrink: 0;
+}
+
+@keyframes disciplinesTicker {
+  0%   { transform: translateX(0) translateZ(0); }
+  100% { transform: translateX(-50%) translateZ(0); }
+}
+
+/* ============================================================
+   FOOTER DE SITIO
+   Barra minimalista debajo de la sección Contacto.
+   Fondo blanco fijo (coherente con la fase de color del Contacto).
+   ============================================================ */
+.site-footer {
+  background: #ffffff;
+  border-top: 1px solid rgba(0, 0, 0, 0.10);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 80px;
+  font-family: var(--font, 'Space Grotesk', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.site-footer__name {
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.site-footer__copy {
+  color: rgba(0, 0, 0, 0.35);
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE
+   Canvas ambiental de fondo completo, opacidad baja
+   ============================================================ */
+@media (max-width: 768px) {
+  html { scroll-snap-type: none; }
+
+  .section__inner {
+    padding: calc(var(--nav-h) + 44px) 6vw 72px;
+    min-height: 0;
+  }
+
+  /* Collapse asymmetric grid to single column on mobile */
+  .section--listen .section__inner,
+  .section--process .section__inner,
+  .section--design .section__inner {
+    display: flex;
+    flex-direction: column;
+  }
+  .section--listen .section__title--xl,
+  .section--process .section__title--xl,
+  .section--design .section__title--xl {
+    margin-bottom: 24px;
+    text-align: left;
+  }
+
+  .nav { padding: 0 20px; height: 56px; }
+  .nav__contact-btn { display: none; }
+  .side-nav { display: none; }
+  .hamburger { display: flex; }
+
+  /* Títulos más grandes en mobile */
+  .hero__name { font-size: clamp(3.4rem, 16vw, 5.5rem); white-space: normal; }
+  .section--hero .section__inner { padding-bottom: 80px; }
+  .scroll-indicator { left: 6vw; }
+
+  .section__title--xl { font-size: clamp(2.4rem, 9vw, 3.5rem); }
+  .section--about .section__title--xl { font-size: clamp(2.8rem, 12vw, 4.5rem); }
+
+  .projects__grid { grid-template-columns: 1fr; gap: 4px; }
+  .project-card { aspect-ratio: 16 / 9; }
+
+  .section--about .section__inner {
+    grid-template-columns: 1fr;
+    row-gap: 32px;
+    min-height: 0;
+  }
+  .about__photo-wrap { grid-column: 1; grid-row: 2; width: min(260px, 70%); aspect-ratio: 3 / 4; }
+  .about__content    { grid-column: 1; grid-row: 1; }
+
+  .section--projects .section__inner { min-height: 0; }
+
+  /* Contacto: una columna en mobile */
+  .contact__cols {
+    grid-template-columns: 1fr;
+    gap: 48px 0;
+  }
+  .contact__grid,
+  .contact__meta {
+    grid-template-columns: 1fr;
+  }
+  /* En mobile (1 col) todas las celdas quedan en la misma columna.
+     La regla desktop .contact__cell:nth-child(even) tiene mayor especificidad (0-3-0)
+     que una regla general (0-2-0), por lo que hay que igualarla con :nth-child(even)
+     para que el reset tenga precedencia. */
+  .contact__grid .contact__cell,
+  .contact__meta  .contact__cell,
+  .contact__grid .contact__cell:nth-child(even),
+  .contact__meta  .contact__cell:nth-child(even) {
+    padding-left: 0;
+    border-left: none;
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  /* En mobile, Formación ocupa el ancho completo disponible */
+  .contact__meta--static { margin-top: 32px; }
+  .contact__meta--static .contact__cell-value { max-width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .section__inner { padding-left: 20px; padding-right: 20px; }
+  .hero__name { font-size: clamp(3rem, 14vw, 3.8rem); }
+}
+
+/* Tablet: proyectos en 2 columnas */
+@media (min-width: 769px) and (max-width: 1100px) {
+  .projects__grid { grid-template-columns: repeat(2, 1fr); }
+  .section--listen .section__inner,
+  .section--process .section__inner,
+  .section--design .section__inner {
+    grid-template-columns: 40% 1fr;
+    column-gap: 4vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-footer { padding: 18px 24px; }
+}

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIDAMÍ — Pedro Benadiba</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/proyecto.css">
+</head>
+<body class="proyecto-page">
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <nav class="nav" id="nav">
+    <div class="nav__logo">
+      <a href="index.html" class="nav__logo-link">
+        <img src="images/logo.svg" alt="" class="nav__logo-img" aria-hidden="true">
+        <span class="nav__logo-text">PB</span>
+      </a>
+    </div>
+    <div class="nav__actions">
+      <a href="index.html#proyectos" class="nav__back-link">&#8592; Portfolio</a>
+    </div>
+  </nav>
+
+  <!-- SLIDER -->
+  <section class="proyecto-slider" aria-label="Galería del proyecto">
+    <div class="slider__track" id="sliderTrack">
+
+      <div class="slider__slide">
+        <img src="images/slidervidami%201.jpg" alt="VIDAMÍ — imagen 1">
+      </div>
+      <div class="slider__slide">
+        <img src="images/slidervidami%202.jpg" alt="VIDAMÍ — imagen 2">
+      </div>
+      <div class="slider__slide">
+        <img src="images/slidervidami%203.jpeg" alt="VIDAMÍ — imagen 3">
+      </div>
+      <div class="slider__slide">
+        <img src="images/slidervidami%204.jpeg" alt="VIDAMÍ — imagen 4">
+      </div>
+      <div class="slider__slide">
+        <img src="images/slidervidami%205.JPG.jpeg" alt="VIDAMÍ — imagen 5">
+      </div>
+
+    </div>
+
+    <button class="slider__btn slider__btn--prev" id="sliderPrev" aria-label="Foto anterior">&#8592;</button>
+    <button class="slider__btn slider__btn--next" id="sliderNext" aria-label="Foto siguiente">&#8594;</button>
+    <div class="slider__dots" id="sliderDots" role="tablist"></div>
+    <div class="slider__counter" id="sliderCounter" aria-live="polite">01 / 05</div>
+  </section>
+
+  <!-- ENCABEZADO -->
+  <header class="proyecto-header">
+    <div class="proyecto-header__content">
+      <h1 class="proyecto-nombre">VIDAM&Iacute;</h1>
+      <p class="proyecto-subtitulo">
+        Pedro Benadiba&nbsp;&nbsp;&middot;&nbsp;&nbsp;2024&nbsp;&nbsp;&middot;&nbsp;&nbsp;Entorno Inmersivo&nbsp;&nbsp;&middot;&nbsp;&nbsp;Laboratorio de Dise&ntilde;o VI
+      </p>
+    </div>
+    <div class="proyecto-header__actions">
+      <!-- Botón "Ver sala" — abre el visor de video YouTube en pantalla completa -->
+      <button class="proyecto-pdf-btn" id="btnVerSala" aria-label="Ver la sala inmersiva en video">
+        <span data-i18n="proj.btn.room">Ver sala</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/>
+          <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- INFORMACIÓN -->
+  <section class="proyecto-info">
+
+    <div class="info-col-main">
+
+      <div class="info-block">
+        <p class="info-block__label">Descripci&oacute;n del Proyecto</p>
+        <h2 class="info-block__title">Entorno Inmersivo 360&deg;.</h2>
+        <div class="info-block__text">
+          <p>El proyecto consisti&oacute; en el dise&ntilde;o y producci&oacute;n de una experiencia inmersiva dentro de una sala 360&deg;, con el objetivo de construir una atm&oacute;sfera espec&iacute;fica a partir de una narrativa propia. Para lograrlo, trabajamos con tres elementos en simult&aacute;neo: imagen, sonido y luz. La sala cuenta con cuatro pantallas que conforman un entorno visual de 360 grados, sonido cuadraf&oacute;nico que envuelve al espectador desde todos los &aacute;ngulos, y una grilla de 36 focos de luz que cubren el espacio.</p>
+          <p>El desaf&iacute;o central fue aprender a manipular estos tres estados de manera integrada, logrando que cada uno reforzara a los otros en funci&oacute;n de la atm&oacute;sfera buscada. M&aacute;s all&aacute; del dominio t&eacute;cnico de cada herramienta, el proyecto exigi&oacute; pensar en t&eacute;rminos de experiencia total: c&oacute;mo el espectador percibe, siente y se sit&uacute;a dentro de un espacio dise&ntilde;ado desde cero.</p>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <p class="info-block__label">La Idea</p>
+        <h2 class="info-block__title">Un viaje entre dos atm&oacute;sferas.</h2>
+        <div class="info-block__text">
+          <p>La idea central fue trazar un viaje en esta experiencia. Partir de una atm&oacute;sfera cruda, hostil y realista, y luego conducir al espectador hacia un entorno encantador donde todas las energ&iacute;as convergen en algo positivo. Una exploraci&oacute;n de la dualidad emocional y f&iacute;sica, narrada a trav&eacute;s de los sentidos.</p>
+          <p>Para construir ese viaje desde adentro, decidimos que el contenido visual ten&iacute;a que ser completamente nuestro. Pintamos a mano, sobre papel, un cat&aacute;logo de formas y texturas propias, y fue ese material anal&oacute;gico el que luego digitalizamos y llevamos a la sala inmersiva.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="info-col-side">
+
+      <div class="info-block">
+        <p class="info-block__label">Integrantes</p>
+        <div class="designers-list">
+          <div class="designer-item">
+            <span class="designer-name">Pedro Benadiba</span>
+          </div>
+        </div>
+      </div>
+
+      <hr class="info-divider">
+
+      <div class="info-block">
+        <p class="info-block__label">Compa&ntilde;eros</p>
+        <div class="designers-list">
+          <div class="designer-item">
+            <span class="designer-name">Nicol&aacute;s Herrero</span>
+          </div>
+        </div>
+      </div>
+
+      <hr class="info-divider">
+
+      <div class="info-block">
+        <p class="info-block__label">Prop&oacute;sito</p>
+        <div class="info-block__text">
+          <p>Laboratorio de Dise&ntilde;o VI &mdash; Entornos Inmersivos</p>
+        </div>
+      </div>
+
+      <hr class="info-divider">
+
+      <div class="info-block">
+        <p class="info-block__label">Herramientas Utilizadas</p>
+        <div class="tools-grid">
+          <span class="tag">After Effects</span>
+          <span class="tag">Photoshop</span>
+          <span class="tag">Figma</span>
+          <span class="tag">Resolume Arena</span>
+          <span class="tag">Pinturas a mano</span>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SECCIÓN MEDIA — GALERÍA + VIDEO -->
+  <section class="proy-media">
+
+    <!-- MITAD IZQUIERDA: 5 fotos en fade loop (4 s c/u) -->
+    <div class="proy-media__gallery">
+      <img class="proy-gallery__img" src="images/ladoizqvidami%201.jpeg" alt="VIDAMÍ galería 1">
+      <img class="proy-gallery__img" src="images/ladoizqvidami%202.png"  alt="VIDAMÍ galería 2">
+      <img class="proy-gallery__img" src="images/ladoizqvidami%203.png"  alt="VIDAMÍ galería 3">
+      <img class="proy-gallery__img" src="images/ladoizqvidami%204.png"  alt="VIDAMÍ galería 4">
+      <img class="proy-gallery__img" src="images/ladoizqvidami%205.png"  alt="VIDAMÍ galería 5">
+    </div>
+
+    <!-- MITAD DERECHA: video en loop -->
+    <div class="proy-media__video">
+      <video autoplay muted loop playsinline>
+        <source src="images/vidvidami.mp4" type="video/mp4">
+      </video>
+    </div>
+
+  </section><!-- /proy-media -->
+
+  <!-- NAVEGACIÓN PIE DE PÁGINA -->
+  <nav class="proyecto-footer-nav" aria-label="Navegación entre proyectos">
+    <a href="index.html#proyectos" class="proyecto-footer-nav__link proyecto-footer-nav__link--back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 12H5M12 5l-7 7 7 7"/>
+      </svg>
+      <span data-i18n="proj.nav.back">Volver al inicio</span>
+    </a>
+    <a href="amigos-tipines.html" class="proyecto-footer-nav__link proyecto-footer-nav__link--next">
+      <span data-i18n="proj.nav.next.vidami">Siguiente: AMIGOS TIPINES</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </nav>
+
+  <!-- MODAL VISOR DE SALA — YouTube -->
+  <div class="pdf-modal" id="salaModal" role="dialog" aria-modal="true" aria-label="Visor de la sala inmersiva" aria-hidden="true">
+    <div class="pdf-modal__bar">
+      <button class="pdf-modal__close" id="salaClose" aria-label="Cerrar visor">&#10005;</button>
+    </div>
+    <iframe
+      class="pdf-modal__frame"
+      id="salaFrame"
+      src=""
+      data-src="https://www.youtube.com/embed/h4UzPTnIlwI?autoplay=1&rel=0&modestbranding=1"
+      title="VIDAMÍ — Sala Inmersiva"
+      allow="autoplay; fullscreen"
+      allowfullscreen
+    ></iframe>
+  </div>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/proyecto.js"></script>
+
+</body>
+</html>

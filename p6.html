@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ABISAL — Pedro Benadiba</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/proyecto.css">
+</head>
+<body class="proyecto-page">
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <nav class="nav" id="nav">
+    <div class="nav__logo">
+      <a href="index.html" class="nav__logo-link">
+        <img src="images/logo.svg" alt="" class="nav__logo-img" aria-hidden="true">
+        <span class="nav__logo-text">PB</span>
+      </a>
+    </div>
+    <div class="nav__actions">
+      <a href="index.html#proyectos" class="nav__back-link">&#8592; Portfolio</a>
+    </div>
+  </nav>
+
+  <!-- SLIDER -->
+  <section class="proyecto-slider" aria-label="Galería del proyecto">
+    <div class="slider__track" id="sliderTrack">
+
+      <div class="slider__slide">
+        <img src="images/sliderabisal1.png" alt="ABISAL — imagen 1">
+      </div>
+      <div class="slider__slide">
+        <img src="images/sliderabisal2.png" alt="ABISAL — imagen 2">
+      </div>
+      <div class="slider__slide">
+        <img src="images/sliderabisal3.png" alt="ABISAL — imagen 3">
+      </div>
+      <div class="slider__slide">
+        <img src="images/sliderabisal4.png" alt="ABISAL — imagen 4">
+      </div>
+
+    </div>
+
+    <button class="slider__btn slider__btn--prev" id="sliderPrev" aria-label="Foto anterior">&#8592;</button>
+    <button class="slider__btn slider__btn--next" id="sliderNext" aria-label="Foto siguiente">&#8594;</button>
+    <div class="slider__dots" id="sliderDots" role="tablist"></div>
+    <div class="slider__counter" id="sliderCounter" aria-live="polite">01 / 04</div>
+  </section>
+
+  <!-- ENCABEZADO -->
+  <header class="proyecto-header">
+    <div class="proyecto-header__content">
+      <h1 class="proyecto-nombre">ABISAL</h1>
+      <p class="proyecto-subtitulo">
+        Pedro Benadiba&nbsp;&nbsp;&middot;&nbsp;&nbsp;2024&nbsp;&nbsp;&middot;&nbsp;&nbsp;Dise&ntilde;o 3D &mdash; Realidad Virtual&nbsp;&nbsp;&middot;&nbsp;&nbsp;Laboratorio de Dise&ntilde;o VI &mdash; UTDT
+      </p>
+    </div>
+    <div class="proyecto-header__actions">
+      <!-- Botón "Ver entorno VR" — abre modal con iframe de YouTube -->
+      <button class="proyecto-pdf-btn" id="btnVerSala" aria-label="Ver el entorno VR">
+        <span data-i18n="proj.btn.vr">Ver entorno VR</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/>
+          <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/>
+        </svg>
+      </button>
+      <p class="proyecto-header__hint">(Abrir Video en YouTube para ver el entorno 360&deg;)</p>
+    </div>
+  </header>
+
+  <!-- INFORMACIÓN -->
+  <section class="proyecto-info">
+
+    <div class="info-col-main">
+
+      <div class="info-block">
+        <p class="info-block__label">Descripci&oacute;n del Proyecto</p>
+        <h2 class="info-block__title">Entorno VR &mdash; 360&deg;.</h2>
+        <div class="info-block__text">
+          <p>El proyecto consisti&oacute; en construir un entorno de realidad virtual en un mundo 3D. La consigna exig&iacute;a desarrollar una narrativa propia como base para la construcci&oacute;n de este mundo digital, combinando imagen y audio cuadraf&oacute;nico para generar una experiencia inmersiva total. El objetivo era aprender a integrar estos dos elementos de manera que se potenciaran mutuamente, logrando que el espectador se sintiera dentro de un entorno coherente y envolvente en 360 grados.</p>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <p class="info-block__label">La Idea</p>
+        <h2 class="info-block__title">El lado &ldquo;Abisal&rdquo;.</h2>
+        <div class="info-block__text">
+          <p>Un ambiente desolado y l&uacute;gubre en las profundidades del oc&eacute;ano, donde los ecos de sonidos distantes chocan con la presencia de figuras ex&oacute;ticas. Sumergido en un abismo angustiante, del que no hay retorno posible a la superficie, se genera una sensaci&oacute;n de aturdimiento y desorientaci&oacute;n.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="info-col-side">
+
+      <div class="info-block">
+        <p class="info-block__label">Integrantes</p>
+        <div class="designers-list">
+          <div class="designer-item">
+            <span class="designer-name">Pedro Benadiba</span>
+          </div>
+        </div>
+      </div>
+
+      <hr class="info-divider">
+
+      <div class="info-block">
+        <p class="info-block__label">Compa&ntilde;eros</p>
+        <div class="designers-list">
+          <div class="designer-item">
+            <span class="designer-name">Nicol&aacute;s Herrero</span>
+          </div>
+        </div>
+      </div>
+
+      <hr class="info-divider">
+
+      <div class="info-block">
+        <p class="info-block__label">Prop&oacute;sito</p>
+        <div class="info-block__text">
+          <p>Laboratorio de Dise&ntilde;o VI &mdash; Entorno 3D (VR) &mdash; UTDT</p>
+        </div>
+      </div>
+
+      <hr class="info-divider">
+
+      <div class="info-block">
+        <p class="info-block__label">Herramientas Utilizadas</p>
+        <div class="tools-grid">
+          <span class="tag">Blender</span>
+          <span class="tag">Reaper</span>
+          <span class="tag">Photoshop</span>
+          <span class="tag">Premiere Pro</span>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- GALERÍA DUAL — dos columnas de fotos en fade loop independiente -->
+  <section class="proy-media proy-media--dual">
+
+    <!-- Columna izquierda: izqabisal 1-3 -->
+    <div class="proy-media__gallery proy-gallery__col">
+      <img class="proy-gallery__img" src="images/izqabisal1.png" alt="ABISAL galería 1">
+      <img class="proy-gallery__img" src="images/izqabisal2.png" alt="ABISAL galería 2">
+      <img class="proy-gallery__img" src="images/izqabisal3.png" alt="ABISAL galería 3">
+    </div>
+
+    <!-- Columna derecha: izqabisal 4-6 (arranca con offset de 2 s) -->
+    <div class="proy-media__gallery proy-gallery__col">
+      <img class="proy-gallery__img" src="images/izqabisal4.png" alt="ABISAL galería 4">
+      <img class="proy-gallery__img" src="images/izqabisal5.png" alt="ABISAL galería 5">
+      <img class="proy-gallery__img" src="images/izqabisal6.png" alt="ABISAL galería 6">
+    </div>
+
+  </section>
+
+  <!-- NAVEGACIÓN PIE DE PÁGINA -->
+  <nav class="proyecto-footer-nav" aria-label="Navegación entre proyectos">
+    <a href="index.html#proyectos" class="proyecto-footer-nav__link proyecto-footer-nav__link--back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 12H5M12 5l-7 7 7 7"/>
+      </svg>
+      <span data-i18n="proj.nav.back">Volver al inicio</span>
+    </a>
+    <a href="index.html#proyectos" class="proyecto-footer-nav__link proyecto-footer-nav__link--next">
+      <span data-i18n="proj.nav.portfolio">Volver al portfolio</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </nav>
+
+  <!-- MODAL VISOR VR (YouTube) -->
+  <div class="pdf-modal" id="salaModal" role="dialog" aria-modal="true" aria-label="Ver entorno VR" aria-hidden="true">
+    <div class="pdf-modal__bar">
+      <button class="pdf-modal__close" id="salaClose" aria-label="Cerrar visor">&#10005;</button>
+    </div>
+    <iframe
+      class="pdf-modal__frame"
+      id="salaFrame"
+      src=""
+      data-src="https://www.youtube.com/embed/v7czzcXD5rQ?autoplay=1&rel=0&modestbranding=1"
+      title="ABISAL — Entorno VR 360°"
+      allowfullscreen
+      allow="autoplay; fullscreen"
+    ></iframe>
+  </div>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/proyecto.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,262 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Identidad Visual Marca X — Pedro Benadiba</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/proyecto.css">
+</head>
+<body class="proyecto-page">
+
+  <!-- Cursor personalizado (solo desktop) -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Navbar -->
+  <nav class="nav" id="nav">
+    <div class="nav__logo">
+      <a href="index.html" class="nav__logo-link">
+        <img src="images/logo.svg" alt="" class="nav__logo-img" aria-hidden="true">
+        <span class="nav__logo-text">PB</span>
+      </a>
+    </div>
+    <div class="nav__actions">
+      <a href="index.html" class="nav__back-link">← Portfolio</a>
+    </div>
+  </nav>
+
+  <!-- SLIDER DE FOTOS
+       Reemplazar cada .slider__placeholder por <img src="...">
+       dentro de .slider__slide cuando tengas las fotos reales. -->
+  <section class="proyecto-slider" aria-label="Galeria del proyecto">
+
+    <div class="slider__track" id="sliderTrack">
+
+      <!-- Foto 01 -->
+      <div class="slider__slide">
+        <div class="slider__placeholder"
+             style="background: linear-gradient(140deg, #0c0c18 0%, #141428 55%, #0a0a14 100%);">
+          <span class="slider__placeholder-label">Imagen 01 — Reemplazar con foto real</span>
+        </div>
+      </div>
+
+      <!-- Foto 02 -->
+      <div class="slider__slide">
+        <div class="slider__placeholder"
+             style="background: linear-gradient(140deg, #0a1520 0%, #0d2035 55%, #080f1a 100%);">
+          <span class="slider__placeholder-label">Imagen 02 — Reemplazar con foto real</span>
+        </div>
+      </div>
+
+      <!-- Foto 03 -->
+      <div class="slider__slide">
+        <div class="slider__placeholder"
+             style="background: linear-gradient(140deg, #10140a 0%, #1a2210 55%, #0c0f08 100%);">
+          <span class="slider__placeholder-label">Imagen 03 — Reemplazar con foto real</span>
+        </div>
+      </div>
+
+      <!-- Foto 04 -->
+      <div class="slider__slide">
+        <div class="slider__placeholder"
+             style="background: linear-gradient(140deg, #160e0a 0%, #241610 55%, #120b08 100%);">
+          <span class="slider__placeholder-label">Imagen 04 — Reemplazar con foto real</span>
+        </div>
+      </div>
+
+    </div><!-- /slider__track -->
+
+    <button class="slider__btn slider__btn--prev" id="sliderPrev" aria-label="Foto anterior">&#8592;</button>
+    <button class="slider__btn slider__btn--next" id="sliderNext" aria-label="Foto siguiente">&#8594;</button>
+
+    <div class="slider__dots" id="sliderDots" role="tablist"></div>
+    <div class="slider__counter" id="sliderCounter" aria-live="polite">01 / 04</div>
+
+  </section>
+
+  <!-- ENCABEZADO DEL PROYECTO -->
+  <header class="proyecto-header">
+    <h1 class="proyecto-nombre">Identidad Visual<br>Marca X</h1>
+    <p class="proyecto-subtitulo">
+      Pedro Benadiba&nbsp;&nbsp;&middot;&nbsp;&nbsp;2024&nbsp;&nbsp;&middot;&nbsp;&nbsp;Branding&nbsp;&nbsp;&middot;&nbsp;&nbsp;Identidad Corporativa
+    </p>
+  </header>
+
+  <!-- INFORMACION DEL PROYECTO -->
+  <section class="proyecto-info">
+
+    <!-- Columna principal: textos largos -->
+    <div class="info-col-main">
+
+      <!-- Descripcion del proyecto -->
+      <div class="info-block">
+        <p class="info-block__label">Descripcion del Proyecto</p>
+        <h2 class="info-block__title">Una identidad construida<br>desde adentro.</h2>
+        <div class="info-block__text">
+          <p>El proyecto surge de la necesidad de Marca X de redefinir su presencia en el mercado. Con mas de diez anios de trayectoria, la empresa buscaba una imagen que refleje su evolucion sin perder el vinculo con sus origenes. La propuesta abarca el diseno completo del sistema de identidad visual: logotipo, tipografias, paleta de colores, papeleria y lineamientos de uso.</p>
+          <p>El trabajo comenzo con una etapa de investigacion profunda, entrevistas con los fundadores y un analisis del ecosistema competitivo. A partir de ahi, se construyo una identidad que comunica solidez, innovacion y cercania con su publico objetivo.</p>
+        </div>
+      </div>
+
+      <!-- Descripcion de la idea -->
+      <div class="info-block">
+        <p class="info-block__label">La Idea</p>
+        <h2 class="info-block__title">El espacio entre la forma<br>y el significado.</h2>
+        <div class="info-block__text">
+          <p>La idea central parte de una tension visual: lo que se dice y lo que se calla. El logotipo incorpora un espacio negativo que funciona como metafora de la escucha activa, valor fundamental de la empresa. La forma es simple, directa, pero cargada de significado cuando se observa con atencion.</p>
+          <p>La paleta cromatica explora el contraste entre tonos calidos y frios, generando una sensacion de equilibrio que acompana la voz de la marca en cualquier contexto: digital, impreso o ambiental. Cada elemento fue pensado para funcionar de forma autonoma y tambien como parte de un sistema cohesivo.</p>
+        </div>
+      </div>
+
+    </div><!-- /info-col-main -->
+
+    <!-- Columna lateral: datos del proyecto -->
+    <div class="info-col-side">
+
+      <!-- Disenadores -->
+      <div class="info-block">
+        <p class="info-block__label">Disenadores</p>
+        <div class="designers-list">
+          <div class="designer-item">
+            <span class="designer-name">Pedro Benadiba</span>
+            <span class="designer-role">Direccion creativa &amp; Diseno</span>
+          </div>
+          <div class="designer-item">
+            <span class="designer-name">Colaborador / a</span>
+            <span class="designer-role">Diseno tipografico</span>
+          </div>
+        </div>
+      </div>
+
+      <hr class="info-divider">
+
+      <!-- Proposito -->
+      <div class="info-block">
+        <p class="info-block__label">Proposito</p>
+        <div class="info-block__text">
+          <p>Crear un sistema visual cohesivo que permita a Marca X comunicar su propuesta de valor de forma clara, consistente y memorable en todos sus puntos de contacto con el publico.</p>
+        </div>
+      </div>
+
+      <hr class="info-divider">
+
+      <!-- Herramientas -->
+      <div class="info-block">
+        <p class="info-block__label">Herramientas Utilizadas</p>
+        <div class="tools-grid">
+          <span class="tag">Illustrator</span>
+          <span class="tag">Photoshop</span>
+          <span class="tag">Figma</span>
+          <span class="tag">InDesign</span>
+          <span class="tag">After Effects</span>
+        </div>
+      </div>
+
+    </div><!-- /info-col-side -->
+
+  </section><!-- /proyecto-info -->
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       SECCIÓN MEDIA — GALERÍA EN LOOP + VIDEO
+       ══════════════════════════════════════════════════════════ -->
+  <section class="proy-media">
+
+    <!-- ── MITAD IZQUIERDA: galería con fade automático ─────────────
+         Soporta entre 4 y 6 fotos. Reemplazar los src="" con las
+         rutas reales (ej: src="images/galeria1.jpg").
+         Las imágenes con src vacío son ignoradas por el script.
+         Podés agregar o quitar <img> según cuántas fotos tengas.
+    ──────────────────────────────────────────────────────────── -->
+    <div class="proy-media__gallery">
+
+      <!-- GALERÍA FOTO 1 — reemplazar src -->
+      <img class="proy-gallery__img" src="" alt="Galería 1">
+      <!-- GALERÍA FOTO 2 — reemplazar src -->
+      <img class="proy-gallery__img" src="" alt="Galería 2">
+      <!-- GALERÍA FOTO 3 — reemplazar src -->
+      <img class="proy-gallery__img" src="" alt="Galería 3">
+      <!-- GALERÍA FOTO 4 — reemplazar src -->
+      <img class="proy-gallery__img" src="" alt="Galería 4">
+      <!-- GALERÍA FOTO 5 (opcional) — reemplazar src o eliminar -->
+      <img class="proy-gallery__img" src="" alt="Galería 5">
+      <!-- GALERÍA FOTO 6 (opcional) — reemplazar src o eliminar -->
+      <img class="proy-gallery__img" src="" alt="Galería 6">
+
+      <!-- Placeholder visible mientras no haya fotos cargadas -->
+      <div class="proy-gallery__empty">Galería</div>
+
+    </div>
+
+    <!-- ── MITAD DERECHA: video ──────────────────────────────────────
+         ELEGIR UNA OPCIÓN y descomentar. Las otras dos dejarlas comentadas.
+
+         OPCIÓN A — VIDEO LOCAL (archivo .mp4 en /images o subcarpeta)
+         <video autoplay muted loop playsinline>
+           <source src="images/VIDEO-NOMBRE.mp4" type="video/mp4">
+         </video>
+
+         OPCIÓN B — YOUTUBE
+         Reemplazar VIDEO_ID por el código del video (ej: dQw4w9WgXcQ)
+         <iframe src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&mute=1&loop=1&playlist=VIDEO_ID&controls=0&rel=0&modestbranding=1"
+                 allow="autoplay; fullscreen" allowfullscreen></iframe>
+
+         OPCIÓN C — VIMEO
+         Reemplazar VIDEO_ID por el código del video
+         <iframe src="https://player.vimeo.com/video/VIDEO_ID?autoplay=1&muted=1&loop=1&background=1&byline=0&title=0"
+                 allow="autoplay; fullscreen" allowfullscreen></iframe>
+    ──────────────────────────────────────────────────────────── -->
+    <div class="proy-media__video">
+
+      <!-- ↓ DESCOMENTAR Y CONFIGURAR CUANDO TENGAS EL VIDEO ↓ -->
+
+      <!-- OPCIÓN A — VIDEO LOCAL
+      <video autoplay muted loop playsinline>
+        <source src="images/VIDEO-NOMBRE.mp4" type="video/mp4">
+      </video>
+      -->
+
+      <!-- OPCIÓN B — YOUTUBE
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&mute=1&loop=1&playlist=VIDEO_ID&controls=0&rel=0&modestbranding=1"
+              allow="autoplay; fullscreen" allowfullscreen></iframe>
+      -->
+
+      <!-- OPCIÓN C — VIMEO
+      <iframe src="https://player.vimeo.com/video/VIDEO_ID?autoplay=1&muted=1&loop=1&background=1&byline=0&title=0"
+              allow="autoplay; fullscreen" allowfullscreen></iframe>
+      -->
+
+      <!-- Placeholder visible mientras no haya video -->
+      <div class="proy-video__placeholder"></div>
+
+    </div>
+
+  </section><!-- /proy-media -->
+  <!-- NAVEGACIÓN PIE DE PÁGINA -->
+  <!-- Actualizar href y nombre del siguiente proyecto cuando la página sea real -->
+  <nav class="proyecto-footer-nav" aria-label="Navegación entre proyectos">
+    <a href="index.html" class="proyecto-footer-nav__link proyecto-footer-nav__link--back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 12H5M12 5l-7 7 7 7"/>
+      </svg>
+      Volver al inicio
+    </a>
+    <a href="amigos-tipines.html" class="proyecto-footer-nav__link proyecto-footer-nav__link--next">
+      Siguiente: Amigos Tipines
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </nav>
+
+  <!-- Scripts -->
+  <script src="js/proyecto.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MULO — Pedro Benadiba</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/proyecto.css">
+</head>
+<body class="proyecto-page">
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <nav class="nav" id="nav">
+    <div class="nav__logo">
+      <a href="index.html" class="nav__logo-link">
+        <img src="images/logo.svg" alt="" class="nav__logo-img" aria-hidden="true">
+        <span class="nav__logo-text">PB</span>
+      </a>
+    </div>
+    <div class="nav__actions">
+      <a href="index.html#proyectos" class="nav__back-link">&#8592; Portfolio</a>
+    </div>
+  </nav>
+
+  <!-- SLIDER -->
+  <section class="proyecto-slider" aria-label="Galeria del proyecto">
+    <div class="slider__track" id="sliderTrack">
+
+      <div class="slider__slide">
+        <img src="images/slidermulo1.png" alt="MULO — imagen 1">
+      </div>
+      <div class="slider__slide">
+        <img src="images/slidermulo2.png" alt="MULO — imagen 2">
+      </div>
+      <div class="slider__slide">
+        <img src="images/slidermulo3.png" alt="MULO — imagen 3">
+      </div>
+      <div class="slider__slide">
+        <img src="images/slidermulo4.png" alt="MULO — imagen 4">
+      </div>
+
+    </div>
+
+    <button class="slider__btn slider__btn--prev" id="sliderPrev" aria-label="Foto anterior">&#8592;</button>
+    <button class="slider__btn slider__btn--next" id="sliderNext" aria-label="Foto siguiente">&#8594;</button>
+    <div class="slider__dots" id="sliderDots" role="tablist"></div>
+    <div class="slider__counter" id="sliderCounter" aria-live="polite">01 / 04</div>
+  </section>
+
+  <!-- ENCABEZADO -->
+  <header class="proyecto-header">
+    <div class="proyecto-header__content">
+      <h1 class="proyecto-nombre">MULO</h1>
+      <p class="proyecto-subtitulo">
+        Pedro Benadiba&nbsp;&nbsp;&middot;&nbsp;&nbsp;2025&nbsp;&nbsp;&middot;&nbsp;&nbsp;Branding&nbsp;&nbsp;&middot;&nbsp;&nbsp;Gesti&oacute;n Cultural
+      </p>
+    </div>
+    <div class="proyecto-header__actions">
+
+      <!-- Botón "Ver teaser" — abre modal de video -->
+      <button class="proyecto-pdf-btn" id="btnVerTeaser" aria-label="Ver el teaser">
+        <span data-i18n="proj.btn.teaser">Ver teaser</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/>
+          <polygon points="10 8 16 12 10 16 10 8"/>
+        </svg>
+      </button>
+
+      <!-- Botón "Ver fanzine" — abre modal flipbook -->
+      <button class="proyecto-pdf-btn" id="btnVerFanzine" aria-label="Ver el fanzine">
+        <span data-i18n="proj.btn.fanzine">Ver fanzine</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+        </svg>
+      </button>
+
+      <!-- Botón "Ver web" — abre el sitio en pestaña nueva -->
+      <a href="https://ramirogalloo.github.io/MULO/" target="_blank" rel="noopener noreferrer"
+         class="proyecto-pdf-btn" aria-label="Ver el sitio web de MULO">
+        <span data-i18n="proj.btn.web">Ver web</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          <polyline points="15 3 21 3 21 9"/>
+          <line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+      </a>
+
+    </div>
+  </header>
+
+  <!-- INFORMACIÓN -->
+  <section class="proyecto-info">
+
+    <div class="info-col-main">
+
+      <div class="info-block">
+        <p class="info-block__label">Descripci&oacute;n del Proyecto</p>
+        <h2 class="info-block__title">Un sistema de identidad visual<br>para la gesti&oacute;n cultural.</h2>
+        <div class="info-block__text">
+          <p>MULO es un proyecto de branding desarrollado para un espacio de gesti&oacute;n cultural independiente. El proyecto abarca el dise&ntilde;o de identidad visual completo: desde la construcci&oacute;n del sistema de marca hasta sus aplicaciones en piezas editoriales, comunicaci&oacute;n digital y materiales de difusi&oacute;n. La identidad busca equilibrar la fuerza gr&aacute;fica con una est&eacute;tica que refleje el car&aacute;cter aut&oacute;nomo, irreverente y comprometido del espacio.</p>
+          <p>El proceso incluy&oacute; el desarrollo de un fanzine impreso que funciona como manifiesto y carta de presentaci&oacute;n del proyecto, un teaser audiovisual y un sitio web que consolida la propuesta online. Cada pieza fue pensada como parte de un ecosistema coherente, con reglas visuales claras que permiten su extensi&oacute;n y adaptaci&oacute;n a distintos formatos y soportes.</p>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <p class="info-block__label">La Idea</p>
+        <h2 class="info-block__title">MULO.</h2>
+        <div class="info-block__text">
+          <p>La marca MULO surge como respuesta a la necesidad de un lenguaje visual propio para un espacio que programa m&uacute;sica, arte y pensamiento cr&iacute;tico fuera de los circuitos convencionales. El nombre condensa una idea de carga, de movimiento y de trabajo colectivo &mdash;rasgos que definen la forma en que el espacio se relaciona con su comunidad.</p>
+          <p>El sistema de identidad trabaja con una tipograf&iacute;a de fuerte presencia, una paleta restringida y un conjunto de recursos gr&aacute;ficos flexibles que permiten comunicar desde el cartel de una fecha hasta la portada de un fanzine. La consistencia visual no proviene de la rigidez sino de la claridad de criterios: MULO puede mutar en cada pieza y seguir siendo reconocible.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="info-col-side">
+
+      <div class="info-block">
+        <p class="info-block__label">Integrantes</p>
+        <div class="designers-list">
+          <div class="designer-item">
+            <span class="designer-name">Pedro Benadiba</span>
+          </div>
+        </div>
+      </div>
+
+      <hr class="info-divider">
+
+      <div class="info-block">
+        <p class="info-block__label">Compa&ntilde;eros</p>
+        <div class="designers-list">
+          <div class="designer-item">
+            <span class="designer-name">Ramiro Gallo</span>
+          </div>
+          <div class="designer-item">
+            <span class="designer-name">Matias Cornara</span>
+          </div>
+        </div>
+      </div>
+
+      <hr class="info-divider">
+
+      <div class="info-block">
+        <p class="info-block__label">Prop&oacute;sito</p>
+        <div class="info-block__text">
+          <p>Branding y Gesti&oacute;n Cultural &mdash; Lic. en Dise&ntilde;o &mdash; UTDT</p>
+        </div>
+      </div>
+
+      <hr class="info-divider">
+
+      <div class="info-block">
+        <p class="info-block__label">Herramientas Utilizadas</p>
+        <div class="tools-grid">
+          <span class="tag">Illustrator</span>
+          <span class="tag">Photoshop</span>
+          <span class="tag">InDesign</span>
+          <span class="tag">After Effects</span>
+          <span class="tag">Figma</span>
+          <span class="tag">Premiere</span>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       SECCIÓN MEDIA — GALERÍA EN LOOP + GIF WEB
+       ══════════════════════════════════════════════════════════ -->
+  <section class="proy-media">
+
+    <!-- ── MITAD IZQUIERDA: 10 fotos en fade loop (4 s c/u) ── -->
+    <div class="proy-media__gallery">
+      <img class="proy-gallery__img" src="images/izqmulo1.png"  alt="MULO — imagen de galería 1">
+      <img class="proy-gallery__img" src="images/izqmulo2.png"  alt="MULO — imagen de galería 2">
+      <img class="proy-gallery__img" src="images/izqmulo3.png"  alt="MULO — imagen de galería 3">
+      <img class="proy-gallery__img" src="images/izqmulo4.png"  alt="MULO — imagen de galería 4">
+      <img class="proy-gallery__img" src="images/izqmulo5.png"  alt="MULO — imagen de galería 5">
+      <img class="proy-gallery__img" src="images/izqmulo6.png"  alt="MULO — imagen de galería 6">
+      <img class="proy-gallery__img" src="images/izqmulo7.png"  alt="MULO — imagen de galería 7">
+      <img class="proy-gallery__img" src="images/izqmulo8.png"  alt="MULO — imagen de galería 8">
+      <img class="proy-gallery__img" src="images/izqmulo9.png"  alt="MULO — imagen de galería 9">
+      <img class="proy-gallery__img" src="images/izqmulo10.png" alt="MULO — imagen de galería 10">
+    </div>
+
+    <!-- ── MITAD DERECHA: GIF estático + botón Ver web ── -->
+    <div class="proy-media__web">
+      <a href="https://ramirogalloo.github.io/MULO/" target="_blank" rel="noopener noreferrer"
+         class="proy-web__btn" aria-label="Ver el sitio web de MULO">
+        <span data-i18n="proj.btn.web">Ver web</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          <polyline points="15 3 21 3 21 9"/>
+          <line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+      </a>
+      <img class="proy-web__gif" src="images/web.gifmulo.gif" alt="MULO — sitio web">
+    </div>
+
+  </section><!-- /proy-media -->
+
+  <!-- NAVEGACIÓN PIE DE PÁGINA -->
+  <nav class="proyecto-footer-nav" aria-label="Navegación entre proyectos">
+    <a href="index.html#proyectos" class="proyecto-footer-nav__link proyecto-footer-nav__link--back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 12H5M12 5l-7 7 7 7"/>
+      </svg>
+      <span data-i18n="proj.nav.back">Volver al inicio</span>
+    </a>
+    <a href="vidami.html" class="proyecto-footer-nav__link proyecto-footer-nav__link--next">
+      <span data-i18n="proj.nav.next.p2">Siguiente: VIDAMÍ</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </nav>
+
+  <!-- MODAL VISOR TEASER (video) -->
+  <div class="video-modal" id="teaserModal" role="dialog" aria-modal="true" aria-label="Teaser MULO" aria-hidden="true">
+    <div class="video-modal__bar">
+      <button class="video-modal__close" id="teaserClose" aria-label="Cerrar teaser">&#10005;</button>
+    </div>
+    <div class="video-modal__body">
+      <video
+        class="video-modal__player"
+        id="teaserPlayer"
+        controls
+        playsinline
+        preload="metadata"
+      >
+        <source src="images/teasermulo.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+  <!-- MODAL VISOR FANZINE (flipbook) -->
+  <div class="pdf-modal" id="fanzineModal" role="dialog" aria-modal="true" aria-label="Fanzine MULO" aria-hidden="true">
+    <div class="pdf-modal__bar">
+      <button class="pdf-modal__close" id="fanzineClose" aria-label="Cerrar fanzine">&#10005;</button>
+    </div>
+    <iframe
+      class="pdf-modal__frame fp-iframe"
+      id="fanzineFrame"
+      src=""
+      data-src="https://heyzine.com/flip-book/d610f8ea08.html"
+      title="MULO — Fanzine"
+      allowfullscreen="allowfullscreen"
+      allow="clipboard-write"
+      scrolling="no"
+    ></iframe>
+  </div>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/proyecto.js"></script>
+
+</body>
+</html>

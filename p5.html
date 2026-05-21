@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Monkey — Pedro Benadiba</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/proyecto.css">
+</head>
+<body class="proyecto-page">
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <nav class="nav" id="nav">
+    <div class="nav__logo">
+      <a href="index.html" class="nav__logo-link">
+        <img src="images/logo.svg" alt="" class="nav__logo-img" aria-hidden="true">
+        <span class="nav__logo-text">PB</span>
+      </a>
+    </div>
+    <div class="nav__actions">
+      <a href="index.html#proyectos" class="nav__back-link">&#8592; Portfolio</a>
+    </div>
+  </nav>
+
+  <!-- SLIDER -->
+  <section class="proyecto-slider" aria-label="Galería del proyecto">
+    <div class="slider__track" id="sliderTrack">
+
+      <div class="slider__slide">
+        <img src="images/slidermonk1.png" alt="The Monkey — imagen 1">
+      </div>
+      <div class="slider__slide">
+        <img src="images/slidermonk2.png" alt="The Monkey — imagen 2">
+      </div>
+      <div class="slider__slide">
+        <img src="images/slidermonk3.png" alt="The Monkey — imagen 3">
+      </div>
+
+    </div>
+
+    <button class="slider__btn slider__btn--prev" id="sliderPrev" aria-label="Foto anterior">&#8592;</button>
+    <button class="slider__btn slider__btn--next" id="sliderNext" aria-label="Foto siguiente">&#8594;</button>
+    <div class="slider__dots" id="sliderDots" role="tablist"></div>
+    <div class="slider__counter" id="sliderCounter" aria-live="polite">01 / 03</div>
+  </section>
+
+  <!-- ENCABEZADO -->
+  <header class="proyecto-header">
+    <div class="proyecto-header__content">
+      <h1 class="proyecto-nombre">The Monkey</h1>
+      <p class="proyecto-subtitulo">
+        Pedro Benadiba&nbsp;&nbsp;&middot;&nbsp;&nbsp;2025&nbsp;&nbsp;&middot;&nbsp;&nbsp;Dise&ntilde;o Sonoro &mdash; Foley&nbsp;&nbsp;&middot;&nbsp;&nbsp;Dise&ntilde;o Sonoro &mdash; UTDT
+      </p>
+    </div>
+    <div class="proyecto-header__actions">
+      <!-- Botón "Ver corto" — abre el visor de video -->
+      <button class="proyecto-pdf-btn" id="btnVerCorto" aria-label="Ver el corto">
+        <span data-i18n="proj.btn.short">Ver corto</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/>
+          <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- INFORMACIÓN -->
+  <section class="proyecto-info">
+
+    <div class="info-col-main">
+
+      <div class="info-block">
+        <p class="info-block__label">Descripci&oacute;n del Proyecto</p>
+        <h2 class="info-block__title">Foley.</h2>
+        <div class="info-block__text">
+          <p>La consigna consist&iacute;a en seleccionar clips de una pel&iacute;cula hasta completar diez minutos de material, eliminar la pista de audio original y reconstruir todo el dise&ntilde;o sonoro mediante la t&eacute;cnica foley. Sin el uso de voces, solo los sonidos del mundo f&iacute;sico de la escena: pasos, texturas, objetos, ambiente. El objetivo era aprender a manipular y editar t&eacute;cnicamente el sonido para el mundo del cine, entendiendo c&oacute;mo se construye un proyecto de dise&ntilde;o sonoro desde cero.</p>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <p class="info-block__label">La Idea</p>
+        <h2 class="info-block__title">The Monkey.</h2>
+        <div class="info-block__text">
+          <p>Para nuestro proyecto elegimos <em>The Monkey</em> (2025), una pel&iacute;cula de horror y gore que nos pareci&oacute; una oportunidad ideal para trabajar el foley en un territorio poco convencional. Las escenas de este g&eacute;nero presentan un desaf&iacute;o sonoro espec&iacute;fico. Eso fue exactamente lo que buscamos explotar, y lo que termin&oacute; siendo el elemento distintivo de nuestro proyecto.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="info-col-side">
+
+      <div class="info-block">
+        <p class="info-block__label">Integrantes</p>
+        <div class="designers-list">
+          <div class="designer-item">
+            <span class="designer-name">Pedro Benadiba</span>
+          </div>
+        </div>
+      </div>
+
+      <hr class="info-divider">
+
+      <div class="info-block">
+        <p class="info-block__label">Compa&ntilde;eros</p>
+        <div class="designers-list">
+          <div class="designer-item">
+            <span class="designer-name">Ramiro Gallo</span>
+          </div>
+        </div>
+      </div>
+
+      <hr class="info-divider">
+
+      <div class="info-block">
+        <p class="info-block__label">Prop&oacute;sito</p>
+        <div class="info-block__text">
+          <p>Dise&ntilde;o Sonoro &mdash; UTDT</p>
+        </div>
+      </div>
+
+      <hr class="info-divider">
+
+      <div class="info-block">
+        <p class="info-block__label">Herramientas Utilizadas</p>
+        <div class="tools-grid">
+          <span class="tag">Pro Tools</span>
+          <span class="tag">Reaper</span>
+          <span class="tag">After Effects</span>
+          <span class="tag">Foley</span>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- NAVEGACIÓN PIE DE PÁGINA -->
+  <nav class="proyecto-footer-nav" aria-label="Navegación entre proyectos">
+    <a href="index.html#proyectos" class="proyecto-footer-nav__link proyecto-footer-nav__link--back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 12H5M12 5l-7 7 7 7"/>
+      </svg>
+      <span data-i18n="proj.nav.back">Volver al inicio</span>
+    </a>
+    <a href="p6.html" class="proyecto-footer-nav__link proyecto-footer-nav__link--next">
+      <span data-i18n="proj.nav.next.p5">Siguiente: ABISAL</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </nav>
+
+  <!-- MODAL VISOR DE VIDEO -->
+  <div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Ver corto" aria-hidden="true">
+    <div class="video-modal__bar">
+      <button class="video-modal__close" id="videoClose" aria-label="Cerrar visor">&#10005;</button>
+    </div>
+    <div class="video-modal__body">
+      <video class="video-modal__player" id="videoPlayer" controls preload="metadata">
+        <source src="images/moviemonkey.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/proyecto.js"></script>
+
+</body>
+</html>
