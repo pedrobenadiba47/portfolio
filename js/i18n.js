@@ -171,7 +171,7 @@ const TRANSLATIONS = {
     'projects.p5.name': 'THE MONKEY', 'projects.p5.cat': 'Sound Design — Foley',
     'projects.p6.name': 'ABISAL',    'projects.p6.cat': '3D Design — Virtual Reality',
 
-    'listen.title': 'Listenitng',
+    'listen.title': 'Listening',
     'listen.text': 'I am defined by a strong creative drive, a holistic approach to design, and an ease for working in multidisciplinary teams. Drawn to exploring new ideas, developing projects with a distinct identity, and continuing to grow both professionally and personally.',
 
     'process.title': 'Processing',
