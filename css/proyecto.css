@@ -662,6 +662,36 @@
   background: #111;
 }
 
+/* Tapa el logo/marca de Heyzine en la esquina inferior del iframe */
+.pdf-modal__heyzine-cover {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 110px;
+  height: 36px;
+  background: #111;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* ── Flipbook en mobile: iframe ocupa ancho completo, altura proporcional ── */
+@media (max-width: 768px) {
+  .pdf-modal {
+    flex-direction: column;
+  }
+  .pdf-modal__frame {
+    flex: none;
+    width: 100vw;
+    height: calc(100vw * 0.65); /* proporción landscape del flipbook */
+    min-height: 260px;
+  }
+  /* En mobile, cubrir el logo de Heyzine abajo a la derecha */
+  .pdf-modal__heyzine-cover {
+    width: 90px;
+    height: 30px;
+  }
+}
+
 /* ============================================================
    MODAL VISOR DE VIDEO (Ver corto / Ver video)
    ============================================================ */
@@ -778,13 +808,16 @@
     padding: 48px 24px;
   }
 
-  /* Navegación pie de página: botones en la misma fila en mobile */
+  /* Navegación pie de página: siempre en la misma fila, cada link ocupa su mitad */
   .proyecto-footer-nav {
     padding: 48px 24px 72px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: space-between;
-    gap: 16px;
+    align-items: center;
+    gap: 12px;
   }
+  .proyecto-footer-nav__link { flex: 1; }
+  .proyecto-footer-nav__link--next { justify-content: flex-end; }
 }
 
 @media (max-width: 480px) {

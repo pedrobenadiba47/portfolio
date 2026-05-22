@@ -278,9 +278,9 @@ button { font-family: var(--font); cursor: pointer; }
 
 .hero__tagline {
   font-size: clamp(1.05rem, 1.5vw, 1.25rem);
-  font-weight: 300;
-  line-height: 1.8;
-  max-width: 620px;
+  font-weight: 500;
+  line-height: 1.85;
+  max-width: 740px;
   color: var(--text);
   text-shadow: 0 0 24px var(--bg), 0 1px 4px var(--bg);
 }
@@ -617,7 +617,7 @@ button { font-family: var(--font); cursor: pointer; }
 .section--design .section__body {
   grid-column: 2;
   grid-row: 1;
-  max-width: 560px;
+  max-width: 100%; /* ocupa todo el ancho de la columna derecha */
 }
 
 .section--process .cards { grid-column: 2; grid-row: 2; }
@@ -1248,4 +1248,21 @@ a.contact__cell:hover .contact__cell-value {
 
 @media (max-width: 768px) {
   .site-footer { padding: 18px 24px; }
+
+  /* Chips en mobile: más pequeños, fondo negro, texto amarillo */
+  .tag {
+    font-size: 0.76rem;
+    padding: 5px 13px;
+    background: #000;
+    color: #D4E174;
+    border-color: #000;
+  }
+}
+
+/* Reducir espacio inferior en la sección Contacto */
+.section--contact .section__inner {
+  padding-bottom: 48px;
+}
+.contact__meta--static {
+  margin-top: 40px;
 }
