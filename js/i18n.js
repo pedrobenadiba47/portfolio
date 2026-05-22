@@ -73,6 +73,7 @@ const TRANSLATIONS = {
     'proj.nav.next.vidami': 'Siguiente: AMIGOS TIPINES',
     'proj.nav.next.at':     'Siguiente: The Monkey',
     'proj.nav.next.p5':     'Siguiente: ABISAL',
+    'proj.nav.next.p6':     'Volver a TABÚ',
   },
 
   en: {
@@ -143,6 +144,7 @@ const TRANSLATIONS = {
     'proj.nav.next.vidami': 'Next: AMIGOS TIPINES',
     'proj.nav.next.at':     'Next: The Monkey',
     'proj.nav.next.p5':     'Next: ABISAL',
+    'proj.nav.next.p6':     'Back to TABÚ',
   }
 };
 
