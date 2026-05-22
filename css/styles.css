@@ -1313,8 +1313,7 @@ a.contact__cell:hover .contact__cell-value {
     position: relative;
     width: 100%;
     margin-top: 32px;
-    /* Altura = ancho de la card activa (62 %) × proporción 4:3 ≈ 46.5 % del contenedor */
-    height: clamp(360px, 46.5vw, 740px);
+    height: clamp(220px, 28vw, 480px);
     /* Sin overflow:hidden → las cards laterales se extienden hasta el borde del viewport,
        que es quien corta gracias al overflow-x:hidden del html */
     overflow: visible;
