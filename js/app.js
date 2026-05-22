@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupAboutPhotoToggle();
   initScramble();            /* después de applyTranslations — texto ya en ES */
   initListenSequence();
+  initProjSlider();          /* slider de proyectos — solo desktop */
   window.addEventListener('resize', debounce(onResize, 250));
 });
 
@@ -172,6 +173,154 @@ function onResize() {
 function debounce(fn, ms) {
   let id;
   return (...args) => { clearTimeout(id); id = setTimeout(() => fn(...args), ms); };
+}
+
+/* ═══════════════════════════════════════════════
+   SLIDER DE PROYECTOS (desktop ≥ 1101px)
+
+   Layout: una card grande centrada + dos laterales
+   que asoman ~19 % del contenedor a cada lado.
+   Auto-avance cada 5 s, pausado al hacer hover.
+   Navegación: flechas, dots, drag/swipe.
+   En mobile/tablet la función sale de inmediato y
+   el grid normal permanece intacto.
+   ═══════════════════════════════════════════════ */
+function initProjSlider() {
+  if (window.innerWidth <= 1100) return;
+
+  const slider = document.getElementById('projSlider');
+  const dotsEl = document.getElementById('projDots');
+  if (!slider || !dotsEl) return;
+
+  const cards = Array.from(slider.querySelectorAll('.project-card'));
+  if (!cards.length) return;
+
+  const total = cards.length;
+  let current  = 0;
+  let autoTimer = null;
+  let isDragging = false;
+  let dragStartX = 0;
+  let dragMoved  = false;
+
+  /* ── Limpiar clases reveal para evitar conflictos con IntersectionObserver ── */
+  cards.forEach(c => {
+    c.classList.remove('reveal', 'reveal-delay-1', 'reveal-delay-2', 'is-visible');
+    c.style.opacity   = '';
+    c.style.transform = '';
+  });
+
+  /* ── Crear dots ────────────────────────────────────────── */
+  cards.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'proj-slider__dot';
+    dot.setAttribute('role', 'tab');
+    dot.setAttribute('aria-label', `Proyecto ${i + 1}`);
+    dot.addEventListener('click', () => { goTo(i); resetAuto(); });
+    dotsEl.appendChild(dot);
+  });
+
+  /* ── Calcular clase de cada card según índice activo ────── */
+  function stateOf(i) {
+    const diff = ((i - current) % total + total) % total;
+    if (diff === 0)         return 'ps-active';
+    if (diff === 1)         return 'ps-next';
+    if (diff === total - 1) return 'ps-prev';
+    if (diff === 2)         return 'ps-far-next';
+    return 'ps-far-prev';
+  }
+
+  /* ── Aplicar estado a todas las cards y dots ────────────── */
+  function updateCards() {
+    cards.forEach((card, i) => {
+      card.classList.remove('ps-active', 'ps-prev', 'ps-next', 'ps-far-prev', 'ps-far-next');
+      card.classList.add(stateOf(i));
+    });
+    dotsEl.querySelectorAll('.proj-slider__dot').forEach((dot, i) => {
+      dot.classList.toggle('is-active', i === current);
+      dot.setAttribute('aria-selected', i === current ? 'true' : 'false');
+    });
+  }
+
+  /* ── Navegación ─────────────────────────────────────────── */
+  function goTo(index) {
+    current = ((index % total) + total) % total;
+    updateCards();
+  }
+  function next() { goTo(current + 1); }
+  function prev() { goTo(current - 1); }
+
+  /* ── Click en cards laterales: avanza el slider sin navegar ─ */
+  cards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (dragMoved) { e.preventDefault(); return; }
+      if (card.classList.contains('ps-prev')) {
+        e.preventDefault(); prev(); resetAuto(); return;
+      }
+      if (card.classList.contains('ps-next')) {
+        e.preventDefault(); next(); resetAuto(); return;
+      }
+      /* ps-active → navegación normal al proyecto */
+    });
+  });
+
+  /* ── Auto-avance ─────────────────────────────────────────── */
+  function startAuto() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(next, 5000);
+  }
+  function stopAuto()  { clearInterval(autoTimer); }
+  function resetAuto() { stopAuto(); startAuto(); }
+
+  slider.addEventListener('mouseenter', stopAuto);
+  slider.addEventListener('mouseleave', startAuto);
+
+  /* ── Flechas ────────────────────────────────────────────── */
+  document.getElementById('projPrev')
+    ?.addEventListener('click', () => { prev(); resetAuto(); });
+  document.getElementById('projNext')
+    ?.addEventListener('click', () => { next(); resetAuto(); });
+
+  /* ── Drag (mouse) ───────────────────────────────────────── */
+  slider.addEventListener('mousedown', (e) => {
+    dragStartX = e.clientX;
+    dragMoved  = false;
+    slider.classList.add('is-dragging');
+  });
+  document.addEventListener('mouseup', (e) => {
+    if (!slider.classList.contains('is-dragging')) return;
+    slider.classList.remove('is-dragging');
+    const delta = e.clientX - dragStartX;
+    if (Math.abs(delta) > 48) {
+      dragMoved = true;
+      delta < 0 ? next() : prev();
+      resetAuto();
+      /* Limpiar flag después del ciclo de eventos para no bloquear el click */
+      setTimeout(() => { dragMoved = false; }, 80);
+    }
+  });
+
+  /* ── Swipe (touch) ──────────────────────────────────────── */
+  let touchStartX = 0;
+  slider.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+  }, { passive: true });
+  slider.addEventListener('touchend', (e) => {
+    const delta = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(delta) > 48) {
+      delta < 0 ? next() : prev();
+      resetAuto();
+    }
+  });
+
+  /* ── Teclado (accesibilidad) ────────────────────────────── */
+  slider.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft')  { prev(); resetAuto(); }
+    if (e.key === 'ArrowRight') { next(); resetAuto(); }
+  });
+
+  /* ── Arranque ───────────────────────────────────────────── */
+  updateCards();
+  startAuto();
 }
 
 /* ═══════════════════════════════════════════════

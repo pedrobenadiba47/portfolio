@@ -152,7 +152,7 @@
 
         <!-- Texto debajo -->
         <div class="about__content reveal reveal-delay-1">
-          <h2 class="section__title--xl" data-i18n="about.title">¡Qué onda! Soy Pedro</h2>
+          <h2 class="section__title--xl"><span data-i18n="about.title.l1">¡Qué onda!</span><span class="about-title-break" data-i18n="about.title.l2">Soy Pedro</span></h2>
           <p class="section__body" data-i18n="about.text">
             Diseñador integral formado en la Universidad Torcuato Di Tella,
             en Buenos Aires, Argentina. Trabajo desarrollando proyectos que integran
@@ -248,87 +248,103 @@
 
         <h2 class="section__label reveal" data-i18n="projects.title">Proyectos</h2>
 
-        <div class="projects__grid">
+        <!-- Shell del slider (solo activo en desktop ≥1101px; en mobile/tablet es ignorado) -->
+        <div class="proj-slider" id="projSlider">
 
-          <a href="tabu.html" class="project-card project-card--real reveal">
-            <div class="project-card__img-wrap">
-              <img src="images/previsutabu.png" alt="TABÚ" class="project-card__img--color">
-              <img src="images/umbtabu.png"     alt=""     class="project-card__img--bw" aria-hidden="true">
-            </div>
-            <div class="project-card__overlay"></div>
-            <div class="project-card__info">
-              <span class="project-card__num">01</span>
-              <span class="project-card__name" data-i18n="projects.p1.name">TAB&Uacute;</span>
-              <span class="project-card__cat" data-i18n="projects.p1.cat">Mobiliario / Dise&ntilde;o Industrial</span>
-            </div>
-          </a>
+          <div class="projects__grid" id="projTrack">
 
-          <a href="p2.html" class="project-card project-card--real reveal reveal-delay-1">
-            <div class="project-card__img-wrap">
-              <img src="images/previsumulo.png" alt="MULO" class="project-card__img--color">
-              <img src="images/umbprevimulo.png" alt=""    class="project-card__img--bw" aria-hidden="true">
-            </div>
-            <div class="project-card__overlay"></div>
-            <div class="project-card__info">
-              <span class="project-card__num">02</span>
-              <span class="project-card__name" data-i18n="projects.p2.name">MULO</span>
-              <span class="project-card__cat" data-i18n="projects.p2.cat">Branding &mdash; Gesti&oacute;n Cultural</span>
-            </div>
-          </a>
+            <a href="tabu.html" class="project-card project-card--real reveal">
+              <div class="project-card__img-wrap">
+                <img src="images/previsutabu.png" alt="TABÚ" class="project-card__img--color">
+                <img src="images/umbtabu.png"     alt=""     class="project-card__img--bw" aria-hidden="true">
+              </div>
+              <div class="project-card__overlay"></div>
+              <div class="project-card__info">
+                <span class="project-card__num">01</span>
+                <span class="project-card__name" data-i18n="projects.p1.name">TAB&Uacute;</span>
+                <span class="project-card__cat" data-i18n="projects.p1.cat">Mobiliario / Dise&ntilde;o Industrial</span>
+              </div>
+              <svg class="card-border" aria-hidden="true" preserveAspectRatio="none" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0,100 L0,0 L100,0 L100,100 L0,100" pathLength="100"/></svg>
+            </a>
 
-          <a href="vidami.html" class="project-card project-card--real reveal reveal-delay-2">
-            <div class="project-card__img-wrap">
-              <img src="images/previsuvidami.JPG" alt="VIDAMÍ" class="project-card__img--color">
-              <img src="images/umbvida.png"        alt=""       class="project-card__img--bw" aria-hidden="true">
-            </div>
-            <div class="project-card__overlay"></div>
-            <div class="project-card__info">
-              <span class="project-card__num">03</span>
-              <span class="project-card__name" data-i18n="projects.p3.name">VIDAM&Iacute;</span>
-              <span class="project-card__cat" data-i18n="projects.p3.cat">Entorno Inmersivo</span>
-            </div>
-          </a>
+            <a href="p2.html" class="project-card project-card--real reveal reveal-delay-1">
+              <div class="project-card__img-wrap">
+                <img src="images/previsumulo.png" alt="MULO" class="project-card__img--color">
+                <img src="images/umbprevimulo.png" alt=""    class="project-card__img--bw" aria-hidden="true">
+              </div>
+              <div class="project-card__overlay"></div>
+              <div class="project-card__info">
+                <span class="project-card__num">02</span>
+                <span class="project-card__name" data-i18n="projects.p2.name">MULO</span>
+                <span class="project-card__cat" data-i18n="projects.p2.cat">Branding &mdash; Gesti&oacute;n Cultural</span>
+              </div>
+              <svg class="card-border" aria-hidden="true" preserveAspectRatio="none" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0,100 L0,0 L100,0 L100,100 L0,100" pathLength="100"/></svg>
+            </a>
 
-          <a href="amigos-tipines.html" class="project-card project-card--real reveal">
-            <div class="project-card__img-wrap">
-              <img src="images/amigos_cover.png" alt="Amigos Tipines" class="project-card__img--color">
-              <img src="images/umbamig.png"       alt=""               class="project-card__img--bw" aria-hidden="true">
-            </div>
-            <div class="project-card__overlay"></div>
-            <div class="project-card__info">
-              <span class="project-card__num">04</span>
-              <span class="project-card__name" data-i18n="projects.p4.name">AMIGOS TIPINES</span>
-              <span class="project-card__cat" data-i18n="projects.p4.cat">Inteligencia Artificial Generativa</span>
-            </div>
-          </a>
+            <a href="vidami.html" class="project-card project-card--real reveal reveal-delay-2">
+              <div class="project-card__img-wrap">
+                <img src="images/previsuvidami.JPG" alt="VIDAMÍ" class="project-card__img--color">
+                <img src="images/umbvida.png"        alt=""       class="project-card__img--bw" aria-hidden="true">
+              </div>
+              <div class="project-card__overlay"></div>
+              <div class="project-card__info">
+                <span class="project-card__num">03</span>
+                <span class="project-card__name" data-i18n="projects.p3.name">VIDAM&Iacute;</span>
+                <span class="project-card__cat" data-i18n="projects.p3.cat">Entorno Inmersivo</span>
+              </div>
+              <svg class="card-border" aria-hidden="true" preserveAspectRatio="none" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0,100 L0,0 L100,0 L100,100 L0,100" pathLength="100"/></svg>
+            </a>
 
-          <a href="p5.html" class="project-card project-card--real reveal reveal-delay-1">
-            <div class="project-card__img-wrap">
-              <img src="images/previsumonk.png" alt="The Monkey" class="project-card__img--color">
-              <img src="images/umbprevisumonk.png" alt="" class="project-card__img--bw" aria-hidden="true">
-            </div>
-            <div class="project-card__overlay"></div>
-            <div class="project-card__info">
-              <span class="project-card__num">05</span>
-              <span class="project-card__name" data-i18n="projects.p5.name">THE MONKEY</span>
-              <span class="project-card__cat" data-i18n="projects.p5.cat">Dise&ntilde;o Sonoro &mdash; Foley</span>
-            </div>
-          </a>
+            <a href="amigos-tipines.html" class="project-card project-card--real reveal">
+              <div class="project-card__img-wrap">
+                <img src="images/amigos_cover.png" alt="Amigos Tipines" class="project-card__img--color">
+                <img src="images/umbamig.png"       alt=""               class="project-card__img--bw" aria-hidden="true">
+              </div>
+              <div class="project-card__overlay"></div>
+              <div class="project-card__info">
+                <span class="project-card__num">04</span>
+                <span class="project-card__name" data-i18n="projects.p4.name">AMIGOS TIPINES</span>
+                <span class="project-card__cat" data-i18n="projects.p4.cat">Inteligencia Artificial Generativa</span>
+              </div>
+              <svg class="card-border" aria-hidden="true" preserveAspectRatio="none" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0,100 L0,0 L100,0 L100,100 L0,100" pathLength="100"/></svg>
+            </a>
 
-          <a href="p6.html" class="project-card project-card--real reveal reveal-delay-2">
-            <div class="project-card__img-wrap">
-              <img src="images/previsuabisal.png" alt="ABISAL" class="project-card__img--color">
-              <img src="images/umbpreabisal.png"  alt=""       class="project-card__img--bw" aria-hidden="true">
-            </div>
-            <div class="project-card__overlay"></div>
-            <div class="project-card__info">
-              <span class="project-card__num">06</span>
-              <span class="project-card__name" data-i18n="projects.p6.name">ABISAL</span>
-              <span class="project-card__cat" data-i18n="projects.p6.cat">Dise&ntilde;o 3D &mdash; Realidad Virtual</span>
-            </div>
-          </a>
+            <a href="p5.html" class="project-card project-card--real reveal reveal-delay-1">
+              <div class="project-card__img-wrap">
+                <img src="images/previsumonk.png" alt="The Monkey" class="project-card__img--color">
+                <img src="images/umbprevisumonk.png" alt="" class="project-card__img--bw" aria-hidden="true">
+              </div>
+              <div class="project-card__overlay"></div>
+              <div class="project-card__info">
+                <span class="project-card__num">05</span>
+                <span class="project-card__name" data-i18n="projects.p5.name">THE MONKEY</span>
+                <span class="project-card__cat" data-i18n="projects.p5.cat">Dise&ntilde;o Sonoro &mdash; Foley</span>
+              </div>
+              <svg class="card-border" aria-hidden="true" preserveAspectRatio="none" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0,100 L0,0 L100,0 L100,100 L0,100" pathLength="100"/></svg>
+            </a>
 
-        </div><!-- /projects__grid -->
+            <a href="p6.html" class="project-card project-card--real reveal reveal-delay-2">
+              <div class="project-card__img-wrap">
+                <img src="images/previsuabisal.png" alt="ABISAL" class="project-card__img--color">
+                <img src="images/umbpreabisal.png"  alt=""       class="project-card__img--bw" aria-hidden="true">
+              </div>
+              <div class="project-card__overlay"></div>
+              <div class="project-card__info">
+                <span class="project-card__num">06</span>
+                <span class="project-card__name" data-i18n="projects.p6.name">ABISAL</span>
+                <span class="project-card__cat" data-i18n="projects.p6.cat">Dise&ntilde;o 3D &mdash; Realidad Virtual</span>
+              </div>
+              <svg class="card-border" aria-hidden="true" preserveAspectRatio="none" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0,100 L0,0 L100,0 L100,100 L0,100" pathLength="100"/></svg>
+            </a>
+
+          </div><!-- /projects__grid -->
+
+          <!-- Controles del slider (visibles solo en desktop vía CSS) -->
+          <button class="proj-slider__arrow proj-slider__arrow--prev" id="projPrev" aria-label="Proyecto anterior">&#8592;</button>
+          <button class="proj-slider__arrow proj-slider__arrow--next" id="projNext" aria-label="Proyecto siguiente">&#8594;</button>
+          <div class="proj-slider__dots" id="projDots" role="tablist"></div>
+
+        </div><!-- /proj-slider -->
       </div>
     </section>
 

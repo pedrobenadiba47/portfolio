@@ -47,7 +47,8 @@ const TRANSLATIONS = {
     'tags.t7': 'Entornos digitales',
     'tags.t8': 'Inteligencia Artificial',
 
-    'about.title': '¡Qué onda! Soy Pedro',
+    'about.title.l1': '¡Qué onda!',
+    'about.title.l2': 'Soy Pedro',
     'about.text': 'Diseñador integral formado en la Universidad Torcuato Di Tella, en Buenos Aires, Argentina. Trabajo desarrollando proyectos que integran distintas disciplinas del diseño para construir propuestas innovadoras, dándole una mirada contemporánea.',
     'about.btn': 'Contactame',
 
@@ -172,7 +173,7 @@ const TRANSLATIONS = {
     'projects.p6.name': 'ABISAL',    'projects.p6.cat': '3D Design — Virtual Reality',
 
     'listen.title': 'Listening',
-    'listen.text': 'I am defined by a strong creative drive, a holistic approach to design, and an ease for working in multidisciplinary teams. Drawn to exploring new ideas, developing projects with a distinct identity, and continuing to grow both professionally and personally.',
+    'listen.text': 'I\'m defined by a strong creative drive, a holistic approach to design, and an ease for working in multidisciplinary teams. Drawn to exploring new ideas, developing projects with a distinct identity, and continuing to grow both professionally and personally.',
 
     'process.title': 'Processing',
     'process.text': 'My working methodology  is built on communication, empathy, and the ability to adapt to different contexts and teams.',
@@ -194,7 +195,8 @@ const TRANSLATIONS = {
     'tags.t7': 'Digital environments',
     'tags.t8': 'Artificial Intelligence',
 
-    'about.title': 'Hey! I\'m Pedro',
+    'about.title.l1': 'Hey!',
+    'about.title.l2': "I'm Pedro",
     'about.text': 'Multidisciplinary designer graduated Universidad Torcuato Di Tella in Buenos Aires, Argentina. I work developing projects that integrate different design disciplines to build innovative proposals, bringing a contemporary perspective.',
     'about.btn': 'Contact me',
 
