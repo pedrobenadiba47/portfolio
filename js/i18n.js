@@ -7,6 +7,12 @@ const TRANSLATIONS = {
 
   es: {
     'nav.contact': 'Contacto',
+    'nav.projects': 'Proyectos',
+    'nav.about':    '¿Quién soy?',
+    'nav.analysis': 'Análisis',
+
+    'contact.placeholder.name':  'Tu Nombre',
+    'contact.placeholder.email': 'tu@correo.com',
 
     'hero.tagline': 'Diseñador integral de Buenos Aires, especializado en la comunicación visual, entornos multimediales y herramientas de inteligencia artificial.',
 
@@ -148,6 +154,12 @@ const TRANSLATIONS = {
 
   en: {
     'nav.contact': 'Contact',
+    'nav.projects': 'Projects',
+    'nav.about':    'Who am I?',
+    'nav.analysis': 'Analysis',
+
+    'contact.placeholder.name':  'Your Name',
+    'contact.placeholder.email': 'your@email.com',
 
     'hero.tagline': 'Buenos Aires-based multidisciplinary designer, specialized in visual communication, multimedia and artificial intelligence.',
 

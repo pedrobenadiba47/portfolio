@@ -84,18 +84,18 @@
 
   <!-- Mobile navigation overlay (hamburger) -->
   <div class="mobile-nav" id="mobileNav" aria-hidden="true">
-    <a href="#proyectos" class="mobile-nav__link">Proyectos</a>
-    <a href="#about"    class="mobile-nav__link">¿Quién soy?</a>
-    <a href="#listen"   class="mobile-nav__link">Análisis</a>
-    <a href="#contact"  class="mobile-nav__link">Contacto</a>
+    <a href="#proyectos" class="mobile-nav__link" data-i18n="nav.projects">Proyectos</a>
+    <a href="#about"    class="mobile-nav__link" data-i18n="nav.about">¿Quién soy?</a>
+    <a href="#listen"   class="mobile-nav__link" data-i18n="nav.analysis">Análisis</a>
+    <a href="#contact"  class="mobile-nav__link" data-i18n="nav.contact">Contacto</a>
   </div>
 
   <!-- Side navigation — bloque fijo 2×2 (solo desktop) -->
   <nav class="side-nav" id="sideNav" aria-label="Secciones">
-    <a href="#proyectos" class="side-nav__chip">Proyectos</a>
-    <a href="#about"    class="side-nav__chip">¿Quién soy?</a>
-    <a href="#listen"   class="side-nav__chip">Análisis</a>
-    <a href="#contact"  class="side-nav__chip">Contacto</a>
+    <a href="#proyectos" class="side-nav__chip" data-i18n="nav.projects">Proyectos</a>
+    <a href="#about"    class="side-nav__chip" data-i18n="nav.about">¿Quién soy?</a>
+    <a href="#listen"   class="side-nav__chip" data-i18n="nav.analysis">Análisis</a>
+    <a href="#contact"  class="side-nav__chip" data-i18n="nav.contact">Contacto</a>
   </nav>
 
   <!-- Capa de fondo — color controlado por JS vía --bg -->
@@ -526,11 +526,11 @@
             <!-- EmailJS: reemplazar constantes en js/contact.js -->
             <form class="contact__form" id="contactForm" novalidate>
               <div class="form__group">
-                <input type="text" id="fieldName" name="from_name" class="form__input" placeholder="Tu Nombre" required autocomplete="name">
+                <input type="text" id="fieldName" name="from_name" class="form__input" placeholder="Tu Nombre" data-i18n-placeholder="contact.placeholder.name" required autocomplete="name">
                 <label class="form__label" for="fieldName" data-i18n="contact.name">Nombre</label>
               </div>
               <div class="form__group">
-                <input type="email" id="fieldEmail" name="reply_to" class="form__input" placeholder="tu@correo.com" required autocomplete="email">
+                <input type="email" id="fieldEmail" name="reply_to" class="form__input" placeholder="tu@correo.com" data-i18n-placeholder="contact.placeholder.email" required autocomplete="email">
                 <label class="form__label" for="fieldEmail" data-i18n="contact.email">Email</label>
               </div>
               <div class="form__group">
