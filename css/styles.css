@@ -1246,17 +1246,14 @@ a.contact__cell:hover .contact__cell-value {
   .hero__name { font-size: clamp(3rem, 14vw, 3.8rem); }
 }
 
-/* ── Blend mode mobile — gradientes CSS en #bgLayer como superficie de blend ──
+/* ── Mix-blend-mode mobile — desactivado completamente ──────────────────
    En iOS Safari el canvas WebGL vive en su propia capa GPU y no puede
-   compositar con mix-blend-mode CSS. Estos gradientes dan al difference
-   algo contra qué trabajar, creando variaciones visibles en los títulos. */
+   compositar con mix-blend-mode CSS, generando manchas y artefactos.
+   En mobile los títulos usan color normal sin blend. */
 @media (max-width: 768px) {
-  #bgLayer {
-    background-image:
-      radial-gradient(ellipse 110% 70% at 8%  18%, rgba(54,52,34,0.55) 0%, transparent 58%),
-      radial-gradient(ellipse  80% 55% at 92% 28%, rgba(38,44,28,0.45) 0%, transparent 52%),
-      radial-gradient(ellipse  90% 50% at 55% 82%, rgba(46,44,30,0.40) 0%, transparent 50%),
-      radial-gradient(ellipse  60% 40% at 30% 65%, rgba(30,36,22,0.30) 0%, transparent 45%);
+  .hero__name,
+  .section__title--xl {
+    mix-blend-mode: normal;
   }
 }
 
