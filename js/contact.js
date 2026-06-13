@@ -11,9 +11,9 @@
    ─────────────────────────────────────────────────────────
    ============================================================ */
 
-const EMAILJS_PUBLIC_KEY  = 'TU_PUBLIC_KEY_AQUI';   /* ← reemplazar */
-const EMAILJS_SERVICE_ID  = 'TU_SERVICE_ID_AQUI';   /* ← reemplazar */
-const EMAILJS_TEMPLATE_ID = 'TU_TEMPLATE_ID_AQUI';  /* ← reemplazar */
+const EMAILJS_PUBLIC_KEY  = 'yP34V3SWDyyyW14yK';
+const EMAILJS_SERVICE_ID  = 'service_sm4pfvp';
+const EMAILJS_TEMPLATE_ID = 'template_9epw70y';
 
 /* Dirección de destino (ya configurada en la plantilla de EmailJS) */
 /* Recordatorio: la plantilla debe enviar a pedrobenadiba4@gmail.com */

@@ -1042,6 +1042,14 @@ a.contact__cell:hover .contact__cell-value {
   opacity: 1;
   pointer-events: all;
 }
+@media (max-width: 768px) {
+  .mobile-nav {
+    background-image: url('../images/fondo_menuopciones_mobile.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
 .mobile-nav__link {
   font-size: clamp(2rem, 10vw, 3.5rem);
   font-weight: 700;
