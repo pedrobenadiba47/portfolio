@@ -760,6 +760,134 @@
 }
 
 /* ============================================================
+   PARTE II — EXPANSIÓN TRANSMEDIA
+   Encabezado centrado + split de dos columnas a ancho completo
+   ============================================================ */
+.expansion {
+  border-top: 1px solid var(--border);
+}
+
+/* Texto a la izquierda (alineado con los títulos de arriba) + arte a la derecha */
+.expansion__head {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: center;
+  padding: 110px 80px 90px;
+  border-bottom: 1px solid var(--border);
+}
+
+.expansion__head-art {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.expansion__head-art img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.expansion__label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+.expansion__title {
+  font-size: clamp(3rem, 5.5vw, 6rem);
+  font-weight: 700;
+  line-height: 0.93;
+  letter-spacing: -0.04em;
+  color: var(--accent);
+  margin-bottom: 44px;
+}
+
+.expansion__intro {
+  max-width: 900px;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.9;
+  color: var(--text-dim);
+}
+.expansion__intro p + p { margin-top: 1.1em; }
+
+/* ── Split: TippinesTV | Tipines: El Juego ── */
+.expansion__split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.expansion__col {
+  padding: 72px 80px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.expansion__col + .expansion__col {
+  border-left: 1px solid var(--border);
+}
+
+.expansion__col-title {
+  font-size: clamp(1.7rem, 2.6vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  line-height: 1.05;
+  margin-bottom: 24px;
+}
+
+.expansion__col-text {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.9;
+  color: var(--text-dim);
+  margin-bottom: 36px;
+}
+.expansion__col-text p + p { margin-top: 1.1em; }
+
+/* El botón queda pegado abajo aunque los textos midan distinto */
+.expansion__col .proyecto-pdf-btn {
+  margin-top: auto;
+  text-decoration: none;
+}
+
+/* ── Galería de la expansión: una sola columna a ancho completo ── */
+.proy-media--full {
+  grid-template-columns: 1fr;
+}
+.proy-media--full .proy-media__gallery {
+  border-right: none;
+}
+
+/* ── Responsive expansión ── */
+@media (max-width: 900px) {
+  /* El arte pasa debajo del texto */
+  .expansion__head {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .expansion__head-art img {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  .expansion__intro {
+    max-width: none;
+  }
+
+  .expansion__split {
+    grid-template-columns: 1fr;
+  }
+  .expansion__col + .expansion__col {
+    border-left: none;
+    border-top: 1px solid var(--border);
+  }
+}
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 @media (max-width: 1024px) {
@@ -807,6 +935,10 @@
   .info-col-side {
     padding: 48px 24px;
   }
+
+  /* Expansión transmedia */
+  .expansion__head { padding: 64px 24px 56px; }
+  .expansion__col  { padding: 48px 24px 56px; }
 
   /* Navegación pie de página: siempre en la misma fila, cada link ocupa su mitad */
   .proyecto-footer-nav {

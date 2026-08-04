@@ -480,16 +480,31 @@ function initGalleryFade() {
   /* Si no hay imágenes con src, dejar el placeholder visible y salir */
   if (imgs.length === 0) return;
 
-  /* Ocultar el placeholder de texto si hay fotos */
-  const empty = document.querySelector('.proy-gallery__empty');
-  if (empty) empty.style.display = 'none';
+  /* Agrupar por galería: cada .proy-media__gallery corre su propio loop,
+     así dos galerías en la misma página no se pisan entre sí. */
+  const groups = new Map();
+  imgs.forEach(img => {
+    const container = img.closest('.proy-media__gallery') || document.body;
+    if (!groups.has(container)) groups.set(container, []);
+    groups.get(container).push(img);
+  });
 
-  let current = 0;
-  imgs[0].classList.add('is-active');
+  Array.from(groups.entries()).forEach(([container, groupImgs], groupIndex) => {
+    /* Ocultar el placeholder de texto si esta galería tiene fotos */
+    const empty = container.querySelector('.proy-gallery__empty');
+    if (empty) empty.style.display = 'none';
 
-  setInterval(() => {
-    imgs[current].classList.remove('is-active');
-    current = (current + 1) % imgs.length;
-    imgs[current].classList.add('is-active');
-  }, GALLERY_INTERVAL);
+    let current = 0;
+    groupImgs[0].classList.add('is-active');
+
+    /* Escalonar las galerías para que no cambien todas al mismo tiempo */
+    const offset = groupIndex * (GALLERY_INTERVAL / 2);
+    setTimeout(() => {
+      setInterval(() => {
+        groupImgs[current].classList.remove('is-active');
+        current = (current + 1) % groupImgs.length;
+        groupImgs[current].classList.add('is-active');
+      }, GALLERY_INTERVAL);
+    }, offset);
+  });
 }

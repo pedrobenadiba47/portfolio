@@ -66,9 +66,19 @@ const TRANSLATIONS = {
     'contact.education': 'Formación',
     'contact.placeholder': 'Hola Pedro! ¿Qué tal?',
 
+    'contact.experience': 'Experiencia',
+    'contact.exp.when1': 'Junio 2026 — Actualidad',
+    'contact.exp.role1': 'Rol: Diseñador Freelance',
+    'contact.exp.desc1': 'Tareas variadas: desde diseño de vinilos o tapas de discos para diferentes bandas, diseños y adaptaciones de piezas promocionales y para RRSS, generación de contenido con inteligencia artificial, motion graphics y más.',
+    'contact.exp.when2': 'Agosto 2022 — Abril 2023',
+    'contact.exp.role2': 'Rol: Diseñador Gráfico',
+    'contact.exp.desc2': 'Diseño y adaptación de piezas de promoción y publicidad para lanzamientos de la marca.',
+
     'proj.btn.book':      'Ver libro',
     'proj.btn.room':      'Ver sala',
     'proj.btn.short':     'Ver corto',
+    'proj.btn.sketch':    'Ver sketch',
+    'proj.btn.play':      'Jugar',
     'proj.btn.vr':        'Ver entorno VR',
     'proj.btn.teaser':    'Ver teaser',
     'proj.btn.fanzine':   'Ver fanzine',
@@ -134,6 +144,20 @@ const TRANSLATIONS = {
     'proj.p4.idea.p1':  'El libro sigue la rutina de un día completo en la vida de un niño, acompañado por sus tres juguetes favoritos: Peppi, Matti y Gatti, tres muñequitos de plastilina que él mismo construyó con sus manos. Cada uno tiene una personalidad bien definida y lo divertido del libro es precisamente eso: encontrarlos escondidos en cada escenario haciendo cosas completamente típicas de su carácter.',
     'proj.p4.idea.p2':  'A lo largo de distintas situaciones cotidianas de la vida de un niño, el lector debe buscarlos a ellos y a los objetos que los delatan, sabiendo que cada uno va a estar haciendo exactamente lo que mejor sabe hacer. El recorrido culmina en los sueños del niño, donde cada tipín cumple su máximo deseo. Pero como todo buen juego tiene un final, al despertar el niño los toma entre sus manos, los amasa con cariño y los vuelve a convertir en una simple bola de plastilina —dándole cierre a la narrativa de esta historia.',
     'proj.p4.purpose':  'IA Generativa y Diseño — Lic. en Diseño — UTDT',
+
+    /* Parte II — Expansión transmedia */
+    'proj.p4.exp.label': 'Parte II',
+    'proj.p4.exp.title': 'Expansión Transmedia',
+    'proj.p4.exp.p1':   'Amigos Tipines nació como un libro de búsqueda — un universo donde tres personajes de plastilina se escondían en el caos de la vida cotidiana de un niño y el lector tenía que encontrarlos. Un concepto claro, con una identidad visual y narrativa muy definida.',
+    'proj.p4.exp.p2':   'Esta segunda etapa del proyecto abre puertas a la expansión del universo de los Amigos Tipines. Con tres personalidades únicas, su identidad sumamente reconocible y un concepto tan consistente, esta historia tiene todo lo que necesita para adaptarse a cualquier soporte.',
+    'proj.p4.exp.p3':   'El salto del libro al audiovisual no solo amplió el alcance del proyecto. Los mismos tipines que antes se escondían en escenas cotidianas ahora toman vida propia y recorren el mundo para protagonizar situaciones distintas. Los personajes y la narrativa nos demuestran el potencial que tiene este universo para lograr expandirse y adaptarse a cualquier otra área del diseño y la comunicación.',
+    'proj.p4.tv.h':     'TippinesTV',
+    'proj.p4.tv.p1':    'Peppi, Matti y Gatti dejan la vida cotidiana del niño que los creó y salen al mundo por su cuenta.',
+    'proj.p4.tv.p2':    'TippinesTV es una serie de sketches de comedia sin narrativa lineal, donde cada escena tiene su propio universo visual con los mismos protagonistas, el mismo tono y la misma lógica de caracterización de personajes.',
+    'proj.p4.tv.p3':    'Este corto presenta cuatro sketches que refieren a universos distintos: cinematográficos, geográficos, culturales y de aventura; demostrando una vez más la versatilidad con la que se puede adaptar la serie. Cuatro sketches, cuatro mundos distintos, que conviven siempre dentro de un mismo universo conceptual.',
+    'proj.p4.game.h':   'Tipines: El Juego',
+    'proj.p4.game.p1':  'El videojuego es la continuación directa de la última escena del sketch. En ella, los tipines viajan al futuro y descubren que el Jefe Soda —un villano poderoso y despiadado— domina el mundo. Para salvar el futuro, deben viajar al presente, llegar a la Casa Rosada y derrotarlo antes de que sea demasiado tarde.',
+    'proj.p4.game.p2':  'El juego presenta diferentes situaciones según el resultado: si lográs derrotar al Jefe Soda, los tipines salvan a la Nación Argentina y se abren nuevas posibilidades —incluyendo convertirte en presidente. Una extensión lúdica del universo que mantiene el humor, los personajes y el espíritu caótico de TippinesTV.',
 
     /* ── THE MONKEY (p5) ── */
     'proj.p5.subtitle': 'Pedro Benadiba  ·  2025  ·  Diseño Sonoro — Foley  ·  Diseño Sonoro — UTDT',
@@ -214,9 +238,19 @@ const TRANSLATIONS = {
     'contact.education': 'Education',
     'contact.placeholder': 'Hey Pedro! How\'s it going?',
 
+    'contact.experience': 'Experience',
+    'contact.exp.when1': 'June 2026 — Present',
+    'contact.exp.role1': 'Role: Freelance Designer',
+    'contact.exp.desc1': 'A bit of everything: vinyl and album cover design for different bands, promotional and social media pieces (both original designs and adaptations), AI-generated content, motion graphics and more.',
+    'contact.exp.when2': 'August 2022 — April 2023',
+    'contact.exp.role2': 'Role: Graphic Designer',
+    'contact.exp.desc2': 'Design and adaptation of promotional and advertising pieces for the brand\'s launches.',
+
     'proj.btn.book':      'View book',
     'proj.btn.room':      'View room',
     'proj.btn.short':     'Watch short',
+    'proj.btn.sketch':    'Watch sketch',
+    'proj.btn.play':      'Play',
     'proj.btn.vr':        'View VR environment',
     'proj.btn.teaser':    'View teaser',
     'proj.btn.fanzine':   'View fanzine',
@@ -282,6 +316,20 @@ const TRANSLATIONS = {
     'proj.p4.idea.p1':  'The book follows the routine of a full day in the life of a child, accompanied by his three favorite toys: Peppi, Matti, and Gatti — three small plasticine figures he built with his own hands. Each has a well-defined personality, and that is precisely what makes the book enjoyable: finding them hidden in each scene doing things completely typical of their character.',
     'proj.p4.idea.p2':  'Across different everyday situations in a child\'s life, the reader must search for them and the objects that give them away, knowing that each one will be doing exactly what they do best. The journey culminates in the child\'s dreams, where each tipín fulfills their greatest wish. But as every good game must come to an end, upon waking the child takes them in his hands, kneads them with care, and turns them back into a simple ball of plasticine — bringing the story to a close.',
     'proj.p4.purpose':  'Generative AI and Design — B.A. in Design — UTDT',
+
+    /* Part II — Transmedia expansion */
+    'proj.p4.exp.label': 'Part II',
+    'proj.p4.exp.title': 'Transmedia Expansion',
+    'proj.p4.exp.p1':   'Amigos Tipines started out as a search-and-find book — a universe where three plasticine characters hid in the chaos of a child\'s everyday life, waiting for the reader to spot them. A clear concept, with a sharply defined visual and narrative identity.',
+    'proj.p4.exp.p2':   'This second stage of the project opens the door to expanding the Amigos Tipines universe. With three distinct personalities, an instantly recognizable identity and a concept this consistent, the story has everything it needs to work in any medium.',
+    'proj.p4.exp.p3':   'Moving from book to screen did more than widen the project\'s reach. The same tipines who once hid in everyday scenes now take on a life of their own, travelling the world and headlining entirely new situations. The characters and the storytelling prove just how far this universe can stretch — and how easily it adapts to any other area of design and communication.',
+    'proj.p4.tv.h':     'TippinesTV',
+    'proj.p4.tv.p1':    'Peppi, Matti and Gatti leave behind the everyday life of the child who made them and head out into the world on their own.',
+    'proj.p4.tv.p2':    'TippinesTV is a comedy sketch series with no linear narrative, where every scene has its own visual universe but keeps the same leads, the same tone and the same logic behind how the characters behave.',
+    'proj.p4.tv.p3':    'This short features four sketches set in very different worlds — cinematic, geographic, cultural and adventure — showing once again how readily the series adapts. Four sketches, four distinct worlds, all living inside the same conceptual universe.',
+    'proj.p4.game.h':   'Tipines: The Game',
+    'proj.p4.game.p1':  'The video game picks up right where the last sketch leaves off. In it, the tipines travel to the future and discover that Boss Soda — a ruthless, all-powerful villain — rules the world. To save the future, they have to travel back to the present, reach the Casa Rosada and defeat him before it is too late.',
+    'proj.p4.game.p2':  'The game plays out differently depending on how you do: beat Boss Soda and the tipines save Argentina, unlocking new possibilities — becoming president among them. A playable extension of the universe that keeps the humor, the characters and the chaotic spirit of TippinesTV.',
 
     /* ── THE MONKEY (p5) ── */
     'proj.p5.subtitle': 'Pedro Benadiba  ·  2025  ·  Sound Design — Foley  ·  Sound Design — UTDT',
