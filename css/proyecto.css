@@ -20,35 +20,26 @@
   cursor: none;
 }
 
-/* Logo en la página de proyecto —
-   Se oculta el <img> (opacity:0) para mantener su espacio en el flex,
-   y se dibuja el logo coloreado en ::before usando mask-image.
-   Esto garantiza exactamente el mismo color que el SVG inline del index. */
-.proyecto-page .nav__logo-link {
-  position: relative; /* contexto para el ::before absoluto */
-}
-
-.proyecto-page .nav__logo-img {
-  height: 32px;
-  width: 32px;
-  display: block;
-  opacity: 0;       /* invisible pero ocupa el espacio en el layout */
+/* ── Logo personaje ──
+   Estas paginas tienen fondo oscuro fijo (no hay fases de scroll),
+   asi que va siempre la version verde. */
+.proyecto-page .nav__logo-bicho {
+  position: relative;
+  height: 34px;
+  width: 34px;
   flex-shrink: 0;
 }
 
-.proyecto-page .nav__logo-link::before {
-  content: '';
+.proyecto-page .nav__logo-img {
   position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 32px;
-  width: 32px;
-  background-color: var(--accent);        /* mismo var que en index.html */
-  -webkit-mask: url(../images/logo.svg) no-repeat center / contain;
-          mask: url(../images/logo.svg) no-repeat center / contain;
-  pointer-events: none;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
 }
+
+.proyecto-page .nav__logo-img--color { opacity: 1; }
+.proyecto-page .nav__logo-img--bw    { opacity: 0; }
 
 .proyecto-page .nav__logo-text {
   font-size: 1.1rem;

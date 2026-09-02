@@ -114,14 +114,28 @@ button { font-family: var(--font); cursor: pointer; }
    phase 0 (dark bg)    → amarillo #D4E174
    phase 1 (yellow bg)  → negro #141414
    phase 2 (white bg)   → negro #111111  */
-.nav__logo-svg {
-  height: 32px;
-  width: auto;
-  color: var(--accent);
-  transition: color 0.4s ease;
+/* Logo personaje — dos capas apiladas.
+   --logo-green va de 1 (fase 0, fondo oscuro) a 0 (fase 1+, fondo claro),
+   lo setea scroll.js junto con el resto de la paleta. */
+.nav__logo-bicho {
+  position: relative;
   display: block;
-  fill: currentColor;
+  height: 34px;
+  width: 34px;
+  flex-shrink: 0;
 }
+
+.nav__logo-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.nav__logo-img--color { opacity: var(--logo-green, 1); }
+.nav__logo-img--bw    { opacity: calc(1 - var(--logo-green, 1)); }
 
 /* Texto "PB" junto al logo SVG */
 .nav__logo-text {
@@ -338,8 +352,8 @@ button { font-family: var(--font); cursor: pointer; }
 
 .section--about .section__inner {
   display: grid;
-  grid-template-columns: 1fr min(340px, 32%);
-  column-gap: 6vw;
+  grid-template-columns: 1fr auto min(340px, 32%);
+  column-gap: 4vw;
   align-items: center;
   padding-top: calc(var(--nav-h) + 56px);
   padding-bottom: 80px;
@@ -347,7 +361,7 @@ button { font-family: var(--font); cursor: pointer; }
 }
 
 .about__photo-wrap {
-  grid-column: 2;
+  grid-column: 3;
   grid-row: 1;
   position: relative;
   width: 100%;
@@ -369,6 +383,60 @@ button { font-family: var(--font); cursor: pointer; }
   gap: 20px;
 }
 .about__content .section__title--xl { margin-bottom: 0; }
+
+/* ── Personaje flotante en "Quien soy" ──
+   B/N por defecto; al pasar el mouse aparece la version verde. */
+.about__bicho {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+  position: relative;
+  width: clamp(160px, 22vw, 300px);
+  height: clamp(160px, 22vw, 300px);
+  animation: bichoFloat 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+.about__bicho-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: opacity 0.45s ease;
+}
+
+/* La capa B/N tapa a la verde; en hover se desvanece */
+.about__bicho-img--bw { opacity: 1; }
+.about__bicho:hover .about__bicho-img--bw { opacity: 0; }
+/* En tactil no hay hover: se togglea con un toque (app.js) */
+.about__bicho.is-color .about__bicho-img--bw { opacity: 0; }
+
+@keyframes bichoFloat {
+  0%, 100% { transform: translateY(0)     rotate(0deg); }
+  50%      { transform: translateY(-12px) rotate(-3deg); }
+}
+
+/* Entre 769 y 1300 px no hay lugar para las 3 columnas sin que el titulo
+   grande se parta en cuatro lineas: el personaje baja debajo del texto. */
+@media (max-width: 1300px) {
+  .section--about .section__inner {
+    grid-template-columns: 1fr min(320px, 34%);
+  }
+  .about__photo-wrap { grid-column: 2; grid-row: 1; }
+  .about__bicho {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: start;
+    width: clamp(150px, 17vw, 210px);
+    height: clamp(150px, 17vw, 210px);
+    margin-top: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about__bicho { animation: none; }
+}
 
 /* Foto color — capa base, en flujo normal, define la altura del contenedor */
 .about__photo--color {
@@ -1272,8 +1340,16 @@ a.contact__cell:hover .contact__cell-value {
     row-gap: 32px;
     min-height: 0;
   }
-  .about__photo-wrap { grid-column: 1; grid-row: 2; width: min(260px, 70%); aspect-ratio: 3 / 4; }
+  .about__photo-wrap { grid-column: 1; grid-row: 3; width: min(260px, 70%); aspect-ratio: 3 / 4; }
   .about__content    { grid-column: 1; grid-row: 1; }
+  /* El personaje queda entre el texto y la foto, tambien apilado */
+  .about__bicho {
+    grid-column: 1;
+    grid-row: 2;
+    width: clamp(150px, 44vw, 230px);
+    height: clamp(150px, 44vw, 230px);
+    justify-self: center;
+  }
 
   .section--projects .section__inner { min-height: 0; }
 
@@ -1544,4 +1620,123 @@ a.contact__cell:hover .contact__cell-value {
     margin-bottom: 52px;
   }
 
+}
+
+/* ============================================================
+   PANTALLA DE CARGA
+   El personaje arranca muy desenfocado y chico, y se va
+   revelando a medida que la barra sube de 0 a 100.
+   Al terminar queda nítido un instante y la capa se va.
+   ============================================================ */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  background: #080808;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 34px;
+  opacity: 1;
+  transition: opacity 0.7s ease;
+}
+
+/* Al terminar: se desvanece y deja de bloquear */
+.preloader.is-done {
+  opacity: 0;
+  pointer-events: none;
+}
+.preloader.is-hidden { display: none; }
+
+/* Mientras carga, el body no scrollea */
+body.is-loading { overflow: hidden; }
+
+.preloader__stage {
+  position: relative;
+  width: min(68vh, 88vw);
+  height: min(68vh, 88vw);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Firma ──
+   Cae desde arriba al llegar a 100, apoyada abajo a la derecha
+   y pisando un poco el dibujo. */
+.preloader__firma {
+  position: absolute;
+  right: -1%;
+  bottom: 4%;
+  width: 44%;
+  height: auto;
+  opacity: 0;
+  transform: scale(1.7) rotate(-7deg);
+  pointer-events: none;
+}
+
+/* Estampa: viene de golpe desde adelante y se planta seco. Sin rebote. */
+.preloader__firma.is-caida {
+  animation: firmaEstampa 0.22s cubic-bezier(0.2, 0.9, 0.1, 1) forwards;
+}
+
+@keyframes firmaEstampa {
+  0% {
+    opacity: 0;
+    transform: scale(1.7) rotate(-7deg);
+  }
+  35% {
+    opacity: 1;                              /* ya visible mientras baja */
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-7deg);       /* tac — queda plantada */
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader__firma.is-caida {
+    animation: none;
+    opacity: 1;
+    transform: scale(1) rotate(-7deg);
+  }
+}
+
+/* El blur y la escala los maneja el JS vía --p (0 → 1) */
+.preloader__bicho {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: blur(calc((1 - var(--p, 0)) * 34px));
+  transform: scale(calc(0.86 + var(--p, 0) * 0.14));
+  opacity: calc(0.25 + var(--p, 0) * 0.75);
+  will-change: filter, transform;
+}
+
+/* Barra de progreso */
+.preloader__bar {
+  width: min(300px, 62vw);
+  height: 2px;
+  background: rgba(212,225,116,0.18);
+  overflow: hidden;
+}
+
+.preloader__bar-fill {
+  width: 0%;
+  height: 100%;
+  background: #D4E174;
+}
+
+.preloader__pct {
+  font-family: var(--font);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: #D4E174;
+  font-variant-numeric: tabular-nums;
+}
+.preloader__pct::after { content: '%'; margin-left: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader__bicho { filter: none; transform: none; opacity: 1; }
 }

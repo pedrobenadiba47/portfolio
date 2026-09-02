@@ -4,6 +4,7 @@
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initPreloader();           /* pantalla de carga — antes que todo lo demas */
   initParticles();
   initScroll();
   initContact();
@@ -78,11 +79,21 @@ function animateCursor() {
 /* ── Toggle tap foto About Me (solo mobile) ── */
 function setupAboutPhotoToggle() {
   if (window.innerWidth > 768) return;   /* solo mobile — desktop usa hover CSS */
+
   const wrap = document.querySelector('.about__photo-wrap');
-  if (!wrap) return;
-  wrap.addEventListener('click', () => {
-    wrap.classList.toggle('is-color');
-  });
+  if (wrap) {
+    wrap.addEventListener('click', () => {
+      wrap.classList.toggle('is-color');
+    });
+  }
+
+  /* El personaje tampoco tiene hover en tactil: se pasa a verde al tocarlo */
+  const bicho = document.querySelector('.about__bicho');
+  if (bicho) {
+    bicho.addEventListener('click', () => {
+      bicho.classList.toggle('is-color');
+    });
+  }
 }
 
 /* ── Menú hamburguesa (mobile) ── */

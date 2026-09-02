@@ -132,6 +132,10 @@ function applyColorPhase(phase, viewH) {
   root.style.setProperty('--cursor-color',        rgb(accent));
   root.style.setProperty('--canvas-opacity',      canvasOpacity.toFixed(3));
 
+  /* Logo personaje: verde en fase 0 (fondo oscuro), B/N desde fase 1 en adelante.
+     Se cruza de forma continua junto con el resto de la paleta. */
+  root.style.setProperty('--logo-green', (1 - Math.min(1, clamped)).toFixed(3));
+
   /* Side-nav chips — usan --text como base para adaptar a cada fase */
   root.style.setProperty('--chip-text',         rgb(text));
   root.style.setProperty('--chip-bg',           rgba(text, 0.13));

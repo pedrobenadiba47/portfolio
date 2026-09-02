@@ -464,7 +464,9 @@ function pAnimate(ts) {
   pGeoCoarse.setDrawRange(pFineCnt + pMidCnt, vCoarse);
 
   pRenderer.render(pScene, pCamera);
-  drawGrain();
+  /* Aca se llamaba drawGrain(), una funcion que no existe en el codigo:
+     tiraba un error por cada frame. El render de las particulas ya ocurrio
+     en la linea de arriba, asi que quitarla no cambia nada de lo que se ve. */
 }
 
 /* ── Public API ── */
